@@ -11,20 +11,7 @@ export default function Checkout() {
   const navigate = useNavigate();
   const { cart, cartTotal, clearCart } = useCart();
 
-  // const API_URL = "http://localhost:4000/api";
-  const API_URL_CHECKOUT = "https://lets-read-india-backend.vercel.app/api";
 
-
-
-  // const [form, setForm] = useState({
-  //   customer_name: "",
-  //   email: "",
-  //   phone: "",
-  //   address: "",
-  //   pincode:"",
-  //   city:"",
-  //   state:""
-  // });
 
   const [form, setForm] = useState({
   customer_name: "",
@@ -73,8 +60,7 @@ const grandTotal = cartTotal - taxAmount;
       // 🧾 1️⃣ Create Razorpay order from backend
       const paymentRes = await fetch(
         // "http://localhost:4000/api/payments/create",
-                `${API_URL_CHECKOUT}/payments/create`,
-
+        "https://lets-read-india-backend.vercel.app/api/payments/create",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -115,7 +101,7 @@ const grandTotal = cartTotal - taxAmount;
 
             const orderRes = await fetch(
               // "http://localhost:4000/api/orders",
-                `${API_URL_CHECKOUT}/orders`,
+              "https://lets-read-india-backend.vercel.app/api/orders",
               {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
