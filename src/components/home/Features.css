@@ -1,0 +1,171 @@
+.features {
+  background: linear-gradient(135deg, #f7f0fa, #f8f3f6, #f5f6ea);
+  font-family: "Poppins", sans-serif;
+}
+
+.features-container {
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* HEADER */
+.features-header {
+  text-align: center;
+  margin-bottom: 60px;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: 0.8s;
+}
+
+.features-header.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.features-header h2 {
+  font-size: 34px;
+  font-weight: 800;
+}
+
+.underline {
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, #a855f7, #ec4899);
+  margin: 16px auto;
+  border-radius: 10px;
+}
+
+.dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.dot { width: 10px; height: 10px; border-radius: 50%; }
+.purple { background: #7c3aed; }
+.pink { background: #ec4899; }
+.yellow { background: #facc15; }
+
+.features-header p {
+  max-width: 720px;
+  margin: auto;
+  color: #555;
+}
+
+/* GRID */
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 30px;
+}
+
+/* CARD */
+.feature-card {
+  background: #fff;
+  padding: 28px;
+  border-radius: 20px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+  transition: 0.4s;
+  opacity: 0;
+  transform: translateY(40px);
+}
+
+.feature-card.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.feature-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 25px 65px rgba(0,0,0,0.12);
+}
+
+/* ICON */
+.icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+  margin-bottom: 16px;
+}
+
+.icon.blue { background: #e0f2fe; color: #2563eb; }
+.icon.green { background: #dcfce7; color: #16a34a; }
+.icon.orange { background: #fef3c7; color: #d97706; }
+.icon.indigo { background: #e0e7ff; color: #4f46e5; }
+.icon.rose { background: #ffe4e6; color: #e11d48; }
+.icon.teal { background: #ccfbf1; color: #0d9488; }
+
+/* TEXT */
+.feature-card h3 {
+  font-size: 20px;
+  margin-bottom: 12px;
+}
+
+.feature-card p {
+  color: #555;
+  line-height: 1.6;
+}
+
+/* BADGE */
+.badge {
+  margin-top: 18px;
+  padding-top: 14px;
+  border-top: 1px solid #eee;
+  font-size: 13px;
+  font-weight: 700;
+  color: #2563eb;
+}
+
+/* CTA */
+.cta {
+  text-align: center;
+  margin-top: 70px;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: 0.8s;
+}
+
+.cta.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.cta p {
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+.cta-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+/* BUTTONS */
+.btn {
+  padding: 14px 28px;
+  border-radius: 10px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.primary {
+  background: linear-gradient(90deg, #7c3aed, #ec4899);
+  color: #fff;
+}
+
+.outline {
+  border: 2px solid #7c3aed;
+  color: #7c3aed;
+}
+
+.btn:hover {
+  transform: scale(1.05);
+}

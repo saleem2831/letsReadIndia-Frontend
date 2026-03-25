@@ -1,0 +1,523 @@
+/* ===== Programs Hero Section ===== */
+.programs-hero {
+  background: linear-gradient(135deg, #7C3AED 0%, #EC4899 100%);
+  color: white;
+  padding: 80px 20px;
+  text-align: center;
+  font-family: 'Comic Neue', 'Comic Sans MS', cursive;
+}
+
+.programs-hero-content h1 {
+  font-size: 3rem;
+  margin-bottom: 15px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.programs-hero-content p {
+  font-size: 1.2rem;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+  opacity: 0.95;
+}
+
+/* ===== Programs Section ===== */
+.programs-section {
+  padding: 80px 20px;
+  background: #f8f7ff;
+}
+
+.programs-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Programs Header */
+.programs-header {
+  text-align: center;
+  margin-bottom: 60px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s ease;
+}
+
+.programs-header.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.programs-header h2 {
+  font-size: 2.5rem;
+  color: #2c3e50;
+  margin-bottom: 15px;
+  font-family: 'Comic Neue', 'Comic Sans MS', cursive;
+  font-weight: bold;
+}
+
+.underline {
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, #EC4899, #7C3AED);
+  margin: 15px auto 20px;
+  border-radius: 2px;
+}
+
+.dots {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.dot.purple { background: #7C3AED; }
+.dot.pink { background: #EC4899; }
+.dot.yellow { background: #FACC15; }
+
+.programs-header p {
+  color: #666;
+  font-size: 1rem;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* Programs Grid */
+.programs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  margin-top: 50px;
+}
+
+.program-card {
+  background: white;
+  border-radius: 12px;
+  padding: 30px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  opacity: 0;
+  transform: translateY(30px);
+  cursor: pointer;
+  border-top: 4px solid #7C3AED;
+}
+
+.program-card.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.program-card:nth-child(2) {
+  border-top-color: #EC4899;
+}
+
+.program-card:nth-child(3) {
+  border-top-color: #3B82F6;
+}
+
+.program-card:nth-child(4) {
+  border-top-color: #F97316;
+}
+
+.program-card:hover {
+  box-shadow: 0 12px 30px rgba(124, 58, 237, 0.15);
+  transform: translateY(-10px);
+}
+
+.program-level {
+  display: inline-block;
+  background: #f0e5ff;
+  color: #7C3AED;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: bold;
+  margin-bottom: 15px;
+  font-family: 'Comic Neue', 'Comic Sans MS', cursive;
+}
+
+.program-icon {
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  border-radius: 12px;
+  color: white;
+}
+
+.program-icon.purple { background: #7C3AED; }
+.program-icon.pink { background: #EC4899; }
+.program-icon.blue { background: #3B82F6; }
+.program-icon.orange { background: #F97316; }
+
+.program-title {
+  font-size: 1.5rem;
+  color: #2c3e50;
+  margin-bottom: 8px;
+  font-family: 'Comic Neue', 'Comic Sans MS', cursive;
+  font-weight: bold;
+}
+
+.program-duration {
+  color: #666;
+  font-size: 0.9rem;
+  margin-bottom: 15px;
+}
+
+.program-description {
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  font-size: 0.95rem;
+}
+
+.program-features {
+  background: #f8f7ff;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.program-features h4 {
+  color: #2c3e50;
+  font-size: 0.9rem;
+  margin-bottom: 10px;
+  font-weight: bold;
+  font-family: 'Comic Neue', 'Comic Sans MS', cursive;
+}
+
+.program-features ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.program-features li {
+  color: #666;
+  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.bullet {
+  color: #7C3AED;
+  font-weight: bold;
+}
+
+.program-btn {
+  width: 100%;
+  padding: 12px;
+  background: linear-gradient(135deg, #7C3AED, #A855F7);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: 'Comic Neue', 'Comic Sans MS', cursive;
+}
+
+.program-btn:hover {
+  background: linear-gradient(135deg, #6D28D9, #9333EA);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(124, 58, 237, 0.3);
+}
+
+/* ===== How It Works Section ===== */
+.how-programs-work {
+  padding: 80px 20px;
+  background: white;
+}
+
+.how-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.how-container h2 {
+  font-size: 2.5rem;
+  color: #2c3e50;
+  margin-bottom: 15px;
+  font-family: 'Comic Neue', 'Comic Sans MS', cursive;
+  font-weight: bold;
+}
+
+.work-underline {
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, #EC4899, #7C3AED);
+  margin: 15px auto 50px;
+  border-radius: 2px;
+}
+
+.work-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+}
+
+.work-card {
+  background: #f8f7ff;
+  padding: 30px;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.work-card.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.work-card:hover {
+  background: linear-gradient(135deg, #f0e5ff, #ffe5f0);
+  transform: translateY(-5px);
+}
+
+.work-number {
+  font-size: 3rem;
+  color: #7C3AED;
+  font-weight: bold;
+  margin-bottom: 15px;
+  font-family: 'Comic Neue', 'Comic Sans MS', cursive;
+}
+
+.work-card h3 {
+  font-size: 1.3rem;
+  color: #2c3e50;
+  margin-bottom: 10px;
+  font-family: 'Comic Neue', 'Comic Sans MS', cursive;
+  font-weight: bold;
+}
+
+.work-card p {
+  color: #666;
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
+/* ===== Program Benefits Section ===== */
+.program-benefits {
+  padding: 80px 20px;
+  background: linear-gradient(135deg, #f8f7ff, #ffe5f0);
+}
+
+.benefits-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.benefits-container h2 {
+  font-size: 2.5rem;
+  color: #2c3e50;
+  margin-bottom: 15px;
+  font-family: 'Comic Neue', 'Comic Sans MS', cursive;
+  font-weight: bold;
+}
+
+.benefits-underline {
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, #7C3AED, #EC4899);
+  margin: 15px auto 50px;
+  border-radius: 2px;
+}
+
+.benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+}
+
+.benefit-card {
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+}
+
+.benefit-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 30px rgba(124, 58, 237, 0.15);
+}
+
+.benefit-icon {
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+}
+
+.benefit-card h3 {
+  font-size: 1.2rem;
+  color: #2c3e50;
+  margin-bottom: 10px;
+  font-family: 'Comic Neue', 'Comic Sans MS', cursive;
+  font-weight: bold;
+}
+
+.benefit-card p {
+  color: #666;
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
+/* ===== CTA Section ===== */
+.programs-cta {
+  background: linear-gradient(135deg, #7C3AED, #EC4899);
+  color: white;
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.cta-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.programs-cta h2 {
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+  font-family: 'Comic Neue', 'Comic Sans MS', cursive;
+  font-weight: bold;
+}
+
+.programs-cta p {
+  font-size: 1.1rem;
+  margin-bottom: 30px;
+  opacity: 0.95;
+}
+
+.cta-buttons {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.cta-btn {
+  padding: 14px 30px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: 'Comic Neue', 'Comic Sans MS', cursive;
+}
+
+.cta-btn.primary {
+  background: #FACC15;
+  color: #2c3e50;
+}
+
+.cta-btn.primary:hover {
+  background: #F6C548;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.cta-btn.secondary {
+  background: transparent;
+  color: white;
+  border: 2px solid white;
+}
+
+.cta-btn.secondary:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-2px);
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+  .programs-hero-content h1 {
+    font-size: 2rem;
+  }
+
+  .programs-header h2,
+  .how-container h2,
+  .benefits-container h2,
+  .programs-cta h2 {
+    font-size: 2rem;
+  }
+
+  .programs-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .work-grid,
+  .benefits-grid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+  }
+
+  .program-card {
+    padding: 20px;
+  }
+
+  .cta-buttons {
+    flex-direction: column;
+  }
+
+  .cta-btn {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .programs-hero {
+    padding: 50px 15px;
+  }
+
+  .programs-section,
+  .how-programs-work,
+  .program-benefits,
+  .programs-cta {
+    padding: 50px 15px;
+  }
+
+  .programs-hero-content h1 {
+    font-size: 1.5rem;
+  }
+
+  .programs-header h2,
+  .how-container h2,
+  .benefits-container h2,
+  .programs-cta h2 {
+    font-size: 1.5rem;
+  }
+
+  .programs-grid,
+  .work-grid,
+  .benefits-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .program-card {
+    padding: 15px;
+  }
+
+  .work-number {
+    font-size: 2rem;
+  }
+
+  .program-btn {
+    padding: 10px;
+    font-size: 0.9rem;
+  }
+}

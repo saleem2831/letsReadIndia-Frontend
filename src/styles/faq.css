@@ -1,0 +1,199 @@
+.faq-page {
+  min-height: 100vh;
+  background: #f5f7fb;
+}
+
+/* Hero Section */
+.faq-hero {
+  background: linear-gradient(135deg, #EC4899, #F43F5E);
+  color: white;
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.faq-hero-content h1 {
+  font-size: 48px;
+  font-weight: 800;
+  margin-bottom: 16px;
+  font-family: 'Comic Sans MS', 'Comic Neue', cursive;
+}
+
+.faq-hero-content p {
+  font-size: 18px;
+  opacity: 0.95;
+  max-width: 600px;
+  margin: auto;
+  font-family: 'Comic Sans MS', 'Comic Neue', cursive;
+}
+
+/* FAQ Content */
+.faq-content {
+  padding: 80px 20px;
+}
+
+.faq-container {
+  max-width: 800px;
+  margin: auto;
+}
+
+/* Accordion */
+.accordion {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 60px;
+}
+
+.accordion-item {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+}
+
+.accordion-item:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+}
+
+.accordion-header {
+  width: 100%;
+  padding: 20px;
+  background: white;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 16px;
+  font-weight: 700;
+  color: #1f1240;
+  transition: all 0.3s ease;
+  font-family: 'Comic Sans MS', 'Comic Neue', cursive;
+  text-align: left;
+}
+
+.accordion-header:hover {
+  background: #f9fafb;
+  color: #7C3AED;
+}
+
+.accordion-item.active .accordion-header {
+  background: linear-gradient(135deg, #7C3AED, #A855F7);
+  color: white;
+}
+
+.accordion-icon {
+  font-size: 24px;
+  font-weight: 300;
+}
+
+.accordion-body {
+  padding: 0 20px 20px 20px;
+  background: white;
+  border-top: 2px solid #f3f4f6;
+  animation: slideDown 0.3s ease;
+}
+
+.accordion-body p {
+  color: #666;
+  line-height: 1.6;
+  font-size: 15px;
+  font-family: 'Comic Sans MS', 'Comic Neue', cursive;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* CTA Section */
+.faq-cta {
+  background: linear-gradient(135deg, #7C3AED, #A855F7);
+  color: white;
+  padding: 60px 40px;
+  border-radius: 16px;
+  text-align: center;
+}
+
+.faq-cta h2 {
+  font-size: 32px;
+  font-weight: 800;
+  margin-bottom: 12px;
+  font-family: 'Comic Sans MS', 'Comic Neue', cursive;
+}
+
+.faq-cta p {
+  font-size: 16px;
+  opacity: 0.95;
+  margin-bottom: 24px;
+  font-family: 'Comic Sans MS', 'Comic Neue', cursive;
+}
+
+.cta-buttons {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn {
+  padding: 12px 28px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  display: inline-block;
+  font-family: 'Comic Sans MS', 'Comic Neue', cursive;
+}
+
+.btn-primary {
+  background: white;
+  color: #7C3AED;
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgba(255, 255, 255, 0.3);
+}
+
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: 2px solid white;
+}
+
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateY(-3px);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .faq-hero-content h1 {
+    font-size: 32px;
+  }
+
+  .faq-cta {
+    padding: 40px 24px;
+  }
+
+  .faq-cta h2 {
+    font-size: 24px;
+  }
+
+  .cta-buttons {
+    flex-direction: column;
+  }
+
+  .btn {
+    width: 100%;
+  }
+}

@@ -1,0 +1,185 @@
+.contact-page {
+  min-height: 100vh;
+  background: #f5f7fb;
+}
+
+/* Hero Section */
+.contact-hero {
+  background: linear-gradient(135deg, #7C3AED, #A855F7);
+  color: white;
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.contact-hero-content h1 {
+  font-size: 48px;
+  font-weight: 800;
+  margin-bottom: 16px;
+  font-family: 'Comic Sans MS', 'Comic Neue', cursive;
+}
+
+.contact-hero-content p {
+  font-size: 18px;
+  opacity: 0.95;
+  max-width: 600px;
+  margin: auto;
+  font-family: 'Comic Sans MS', 'Comic Neue', cursive;
+}
+
+/* Contact Content */
+.contact-content {
+  padding: 80px 20px;
+}
+
+.contact-container {
+  max-width: 1200px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: start;
+}
+
+/* Contact Info Cards */
+.contact-info {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.info-card {
+  background: white;
+  padding: 32px 24px;
+  border-radius: 16px;
+  text-align: center;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  border-top: 4px solid #7C3AED;
+}
+
+.info-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 32px rgba(124, 58, 237, 0.15);
+}
+
+.info-icon {
+  font-size: 48px;
+  margin-bottom: 16px;
+}
+
+.info-card h3 {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: #1f1240;
+  font-family: 'Comic Sans MS', 'Comic Neue', cursive;
+}
+
+.info-card p {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 16px;
+  font-family: 'Comic Sans MS', 'Comic Neue', cursive;
+}
+
+.info-card a {
+  display: inline-block;
+  background: linear-gradient(135deg, #7C3AED, #A855F7);
+  color: white;
+  padding: 8px 16px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.info-card a:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(124, 58, 237, 0.4);
+}
+
+/* Contact Form */
+.contact-form {
+  background: white;
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+.contact-form h2 {
+  font-size: 28px;
+  font-weight: 800;
+  margin-bottom: 32px;
+  color: #1f1240;
+  font-family: 'Comic Sans MS', 'Comic Neue', cursive;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #1f1240;
+  font-family: 'Comic Sans MS', 'Comic Neue', cursive;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 12px 16px;
+  border: 2px solid #e5e7eb;
+  border-radius: 8px;
+  font-size: 14px;
+  font-family: 'Comic Sans MS', 'Comic Neue', cursive;
+  transition: all 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #7C3AED;
+  box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.1);
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 14px 28px;
+  background: linear-gradient(135deg, #7C3AED, #A855F7);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: 'Comic Sans MS', 'Comic Neue', cursive;
+}
+
+.submit-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(124, 58, 237, 0.4);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .contact-container {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .contact-info {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-hero-content h1 {
+    font-size: 32px;
+  }
+
+  .contact-form {
+    padding: 32px 20px;
+  }
+}

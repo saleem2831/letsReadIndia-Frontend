@@ -1,0 +1,906 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   SUPER ADMIN DASHBOARD - MODERN UI DESIGN
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   WRAPPER & CONTAINER
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.super-admin-dashboard-wrapper {
+  min-height: 100vh;
+  background: #f5f7fa;
+  background-image: 
+    radial-gradient(at 20% 20%, rgba(102, 126, 234, 0.08) 0px, transparent 50%),
+    radial-gradient(at 80% 80%, rgba(118, 75, 162, 0.08) 0px, transparent 50%);
+  padding: 2rem;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+.super-admin-dashboard-container {
+  max-width: 1500px;
+  margin: 0 auto;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   HEADER
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.super-admin-dashboard-header {
+  margin-bottom: 2.5rem;
+  animation: fadeInDown 0.6s ease-out;
+}
+
+.super-admin-dashboard-title {
+  font-size: 2.2rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  letter-spacing: -0.5px;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   STATS GRID
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.super-admin-dashboard-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+  animation: fadeInUp 0.6s ease-out 0.1s backwards;
+}
+
+.stat-card {
+  background: white;
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(102, 126, 234, 0.15);
+  padding: 1.8rem;
+  border-radius: 1.2rem;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.stat-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #a78bfa, #f472b6);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-8px);
+  background: white;
+  border-color: rgba(102, 126, 234, 0.3);
+  box-shadow: 0 8px 20px rgba(102, 126, 234, 0.15);
+}
+
+.stat-card:hover::before {
+  opacity: 1;
+}
+
+.stat-card:nth-child(1) .stat-value { color: #a78bfa; }
+.stat-card:nth-child(2) .stat-value { color: #f472b6; }
+
+.stat-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 0.8rem;
+}
+
+.stat-value {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #1a1a1a;
+  line-height: 1;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   CREATE/EDIT ADMIN FORM CARD
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.super-admin-dashboard-create-admin-card {
+  background: white;
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(102, 126, 234, 0.15);
+  padding: 2rem;
+  border-radius: 1.2rem;
+  margin-bottom: 2.5rem;
+  animation: fadeInUp 0.6s ease-out 0.2s backwards;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.super-admin-dashboard-form-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.super-admin-dashboard-form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.2rem;
+  margin-bottom: 1.5rem;
+}
+
+.super-admin-dashboard-form-input {
+  padding: 1rem 1.2rem;
+  background: #f8f9fa;
+  border: 1px solid #ddd;
+  border-radius: 0.8rem;
+  font-size: 0.95rem;
+  font-family: inherit;
+  color: #1a1a1a;
+  transition: all 0.3s ease;
+}
+
+.super-admin-dashboard-form-input::placeholder {
+  color: #999;
+}
+
+.super-admin-dashboard-form-input:focus {
+  outline: none;
+  border-color: #667eea;
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.super-admin-dashboard-password-wrapper .super-admin-dashboard-form-input {
+  padding-right: 3rem;
+  width: 100%;
+}
+
+.super-admin-dashboard-password-wrapper {
+  position: relative;
+  display: block;
+  width: 100%;
+}
+
+.super-admin-dashboard-password-toggle {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 0.3rem 0.5rem;
+  transition: transform 0.2s ease;
+  color: #667eea;
+  pointer-events: auto;
+  z-index: 10;
+}
+
+.super-admin-dashboard-password-toggle:hover {
+  transform: translateY(-50%) scale(1.2);
+  color: #764ba2;
+}
+
+.super-admin-dashboard-form-button-group {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.super-admin-dashboard-submit-btn {
+  padding: 1rem 2rem;
+  background: linear-gradient(135deg, #a78bfa 0%, #f472b6 100%);
+  color: #fff;
+  border: none;
+  border-radius: 0.8rem;
+  font-weight: 700;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 20px rgba(167, 139, 250, 0.4);
+}
+
+.super-admin-dashboard-submit-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 30px rgba(167, 139, 250, 0.5);
+}
+
+.super-admin-dashboard-submit-btn:active {
+  transform: translateY(-1px);
+}
+
+.super-admin-dashboard-submit-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.super-admin-dashboard-cancel-btn {
+  padding: 1rem 1.5rem;
+  background: transparent;
+  color: #666;
+  border: 1px solid #ddd;
+  border-radius: 0.8rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.super-admin-dashboard-cancel-btn:hover {
+  border-color: #764ba2;
+  color: #764ba2;
+  background: rgba(118, 75, 162, 0.05);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   ADMIN TABLE CARD
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.super-admin-dashboard-admin-table-card {
+  background: white;
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(102, 126, 234, 0.15);
+  border-radius: 1.2rem;
+  overflow: hidden;
+  animation: fadeInUp 0.6s ease-out 0.3s backwards;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.super-admin-dashboard-table-header {
+  padding: 1.5rem 2rem;
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+  border-bottom: 1px solid rgba(102, 126, 234, 0.15);
+}
+
+.super-admin-dashboard-table-header-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0;
+}
+
+.super-admin-dashboard-admin-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.super-admin-dashboard-admin-table thead {
+  background: rgba(102, 126, 234, 0.05);
+}
+
+.super-admin-dashboard-admin-table th {
+  padding: 1rem 1.2rem;
+  text-align: left;
+  font-weight: 600;
+  color: #666;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.8px;
+  border-bottom: 1px solid rgba(102, 126, 234, 0.1);
+}
+
+.super-admin-dashboard-admin-table td {
+  padding: 1.2rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  color: #1a1a1a;
+  font-size: 0.9rem;
+}
+
+.super-admin-dashboard-admin-table tbody tr {
+  transition: all 0.3s ease;
+}
+
+.super-admin-dashboard-admin-table tbody tr:hover {
+  background: rgba(102, 126, 234, 0.05);
+}
+
+.super-admin-dashboard-admin-name {
+  font-weight: 700;
+  color: #1a1a1a;
+  display: block;
+  margin-bottom: 0.3rem;
+}
+
+.super-admin-dashboard-admin-email {
+  font-size: 0.85rem;
+  color: #999;
+}
+
+/* STATUS BADGES */
+.super-admin-dashboard-status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.5rem 1rem;
+  border-radius: 2rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.super-admin-dashboard-status-active {
+  background: rgba(34, 197, 94, 0.15);
+  color: #22c55e;
+  border: 1px solid rgba(34, 197, 94, 0.3);
+}
+
+.super-admin-dashboard-status-inactive {
+  background: rgba(239, 68, 68, 0.15);
+  color: #ef4444;
+  border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+/* TABLE ACTIONS */
+.super-admin-dashboard-table-actions {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.super-admin-dashboard-action-btn {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.super-admin-dashboard-btn-toggle {
+  background: rgba(102, 126, 234, 0.1);
+  color: #667eea;
+  border: 1px solid rgba(102, 126, 234, 0.3);
+}
+
+.super-admin-dashboard-btn-toggle:hover {
+  background: #667eea;
+  color: #fff;
+}
+
+.super-admin-dashboard-btn-edit {
+  background: rgba(59, 130, 246, 0.15);
+  color: #3b82f6;
+  border: 1px solid rgba(59, 130, 246, 0.3);
+}
+
+.super-admin-dashboard-btn-edit:hover {
+  background: #3b82f6;
+  color: #fff;
+}
+
+.super-admin-dashboard-btn-delete {
+  background: rgba(239, 68, 68, 0.15);
+  color: #ef4444;
+  border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+.super-admin-dashboard-btn-delete:hover {
+  background: #ef4444;
+  color: #fff;
+}
+
+.super-admin-dashboard-action-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.super-admin-dashboard-action-btn:disabled:hover {
+  background: transparent;
+  transform: none;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   PAGINATION
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.super-admin-dashboard-pagination-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 2rem;
+  border-top: 1px solid rgba(102, 126, 234, 0.1);
+  background: rgba(102, 126, 234, 0.03);
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.super-admin-dashboard-pagination-buttons {
+  display: flex;
+  gap: 1rem;
+}
+
+.super-admin-dashboard-pagination-btn {
+  padding: 0.7rem 1.5rem;
+  background: transparent;
+  color: #666;
+  border: 1px solid #ddd;
+  border-radius: 0.6rem;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.super-admin-dashboard-pagination-btn:hover:not(:disabled) {
+  border-color: #667eea;
+  color: #667eea;
+  background: rgba(102, 126, 234, 0.1);
+}
+
+.super-admin-dashboard-pagination-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.super-admin-dashboard-pagination-info {
+  font-weight: 600;
+  color: #666;
+  font-size: 0.9rem;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   DELETE MODAL
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.super-admin-dashboard-delete-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.delete-modal-content {
+  background: white;
+  padding: 2.5rem;
+  border-radius: 1rem;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  max-width: 400px;
+  width: 90%;
+  animation: scaleIn 0.3s ease-out;
+}
+
+.delete-modal-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #ef4444;
+  margin-bottom: 1rem;
+}
+
+.delete-modal-message {
+  font-size: 1rem;
+  color: #666;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+.delete-modal-actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.btn-confirm-delete {
+  flex: 1;
+  padding: 0.9rem;
+  background: #ef4444;
+  color: white;
+  border: none;
+  border-radius: 0.6rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-confirm-delete:hover:not(:disabled) {
+  background: #dc2626;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(239, 68, 68, 0.4);
+}
+
+.btn-confirm-delete:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.btn-cancel-delete {
+  flex: 1;
+  padding: 0.9rem;
+  background: #f3f4f6;
+  color: #1a1a1a;
+  border: 1.5px solid #ddd;
+  border-radius: 0.6rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-cancel-delete:hover {
+  background: white;
+  border-color: #999;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   ANIMATIONS
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   RESPONSIVE DESIGN
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+@media (max-width: 1200px) {
+  .super-admin-dashboard-admin-table {
+    display: block;
+    overflow-x: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .super-admin-dashboard-wrapper {
+    padding: 1rem;
+  }
+
+  .super-admin-dashboard-title {
+    font-size: 1.6rem;
+  }
+
+  .super-admin-dashboard-stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .super-admin-dashboard-form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .super-admin-dashboard-form-button-group {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .super-admin-dashboard-submit-btn,
+  .super-admin-dashboard-cancel-btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  .super-admin-dashboard-pagination-controls {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .super-admin-dashboard-pagination-buttons {
+    width: 100%;
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+  }
+
+  .super-admin-dashboard-delete-modal {
+    min-width: auto;
+    width: 90%;
+    max-width: 400px;
+  }
+
+  .super-admin-dashboard-table-actions {
+    flex-direction: column;
+  }
+
+  .super-admin-dashboard-action-btn {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .super-admin-dashboard-create-admin-card,
+  .super-admin-dashboard-admin-table-card {
+    padding: 1rem;
+  }
+
+  .stat-card {
+    padding: 1.2rem;
+  }
+
+  .stat-value {
+    font-size: 2rem;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   SCROLLBAR STYLING
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.super-admin-dashboard-admin-table-card::-webkit-scrollbar {
+  height: 8px;
+}
+
+.super-admin-dashboard-admin-table-card::-webkit-scrollbar-track {
+  background: rgba(102, 126, 234, 0.05);
+}
+
+.super-admin-dashboard-admin-table-card::-webkit-scrollbar-thumb {
+  background: rgba(102, 126, 234, 0.3);
+  border-radius: 4px;
+}
+
+.super-admin-dashboard-admin-table-card::-webkit-scrollbar-thumb:hover {
+  background: rgba(102, 126, 234, 0.5);
+}
+/* ═══════════════════════════════════════════════════════════════════════════
+   REASSIGN MODAL - COMPLETE STYLING
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.super-admin-dashboard-delete-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease-out;
+  backdrop-filter: blur(4px);
+  padding: 1rem;
+}
+
+.super-admin-dashboard-delete-modal-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  text-align: center;
+  letter-spacing: -0.3px;
+  margin: 0 0 1rem 0;
+  padding: 0;
+}
+
+.super-admin-dashboard-delete-modal-content {
+  background: white;
+  padding: 2rem 2.5rem;
+  border-radius: 1.2rem;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  max-width: 450px;
+  width: 100%;
+  animation: scaleIn 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* SELECT DROPDOWN STYLING */
+.super-admin-dashboard-delete-select {
+  width: 100%;
+  padding: 0.9rem 1rem;
+  border: 2px solid #e5e7eb;
+  border-radius: 0.8rem;
+  font-size: 1rem;
+  color: #1a1a1a;
+  background: white;
+  cursor: pointer;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-weight: 500;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%231a1a1a' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  padding-right: 2.5rem;
+}
+
+.super-admin-dashboard-delete-select:hover {
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.super-admin-dashboard-delete-select:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
+}
+
+.super-admin-dashboard-delete-select option {
+  color: #1a1a1a;
+  background: white;
+  padding: 0.5rem 1rem;
+}
+
+/* CONFIRM DELETE BUTTON */
+.btn-confirm {
+  width: 100%;
+  padding: 1rem;
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+  color: white;
+  border: none;
+  border-radius: 0.8rem;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 15px rgba(239, 68, 68, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.btn-confirm:hover:not(:disabled) {
+  background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(239, 68, 68, 0.3);
+}
+
+.btn-confirm:active:not(:disabled) {
+  transform: translateY(-1px);
+}
+
+.btn-confirm:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* CLOSE/CANCEL BUTTON */
+.btn-close-modal {
+  width: 100%;
+  padding: 1rem;
+  background: #f3f4f6;
+  color: #1a1a1a;
+  border: 2px solid #e5e7eb;
+  border-radius: 0.8rem;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.btn-close-modal:hover {
+  background: white;
+  border-color: #d1d5db;
+  transform: translateY(-3px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.btn-close-modal:active {
+  transform: translateY(-1px);
+}
+
+/* MODAL ANIMATIONS */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* RESPONSIVE MODAL */
+@media (max-width: 768px) {
+  .super-admin-dashboard-delete-modal-content {
+    max-width: 400px;
+    padding: 1.5rem 1.8rem;
+  }
+
+  .super-admin-dashboard-delete-modal-title {
+    font-size: 1.3rem;
+  }
+
+  .super-admin-dashboard-delete-select,
+  .btn-confirm,
+  .btn-close-modal {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .super-admin-dashboard-delete-modal {
+    padding: 1rem;
+  }
+
+  .super-admin-dashboard-delete-modal-content {
+    max-width: 100%;
+    padding: 1.5rem 1.2rem;
+    gap: 1.2rem;
+  }
+
+  .super-admin-dashboard-delete-modal-title {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+  }
+
+  .super-admin-dashboard-delete-select,
+  .btn-confirm,
+  .btn-close-modal {
+    padding: 0.85rem;
+    font-size: 0.9rem;
+  }
+}

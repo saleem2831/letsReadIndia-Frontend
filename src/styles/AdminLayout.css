@@ -1,0 +1,462 @@
+/* ========================================
+   ADMIN LAYOUT STYLING - NAVBAR VERSION
+   ======================================== */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.admin-layout-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: #f5f7fa;
+}
+
+/* ========================================
+   NAVBAR
+   ======================================== */
+
+.admin-navbar {
+  background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.25);
+  display: flex;
+  align-items: center;
+  padding: 0 1.5rem;
+  height: 70px;
+  gap: 1.5rem;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  animation: slideInDown 0.5s ease-out;
+}
+
+/* ========================================
+   NAVBAR BRAND
+   ======================================== */
+
+.admin-navbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  flex-shrink: 0;
+}
+
+.admin-navbar-logo {
+  height: 45px;
+  width: auto;
+  object-fit: contain;
+  transition: all 0.3s ease;
+}
+
+.admin-navbar-logo:hover {
+  transform: scale(1.05);
+}
+
+.admin-navbar-title {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: white;
+  margin: 0;
+  white-space: nowrap;
+}
+
+/* ========================================
+   NAVBAR NAVIGATION MENU
+   ======================================== */
+
+.admin-nav-wrapper {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+}
+
+.admin-nav-menu {
+  display: flex;
+  list-style: none;
+  gap: 0;
+  align-items: center;
+}
+
+.admin-nav-item {
+  margin: 0;
+}
+
+.admin-nav-link {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.7rem 1.5rem;
+  color: rgba(255, 255, 255, 0.9);
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  font-size: 1rem;
+  border-bottom: 3px solid transparent;
+}
+
+.admin-nav-link:hover {
+  color: white;
+  border-bottom-color: #ffd89b;
+  transform: translateY(-2px);
+}
+
+.admin-nav-link.active {
+  color: white;
+  border-bottom-color: #ffd89b;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 0.5rem 0.5rem 0 0;
+}
+
+.admin-nav-link.active::after {
+  content: "";
+  position: absolute;
+  bottom: -3px;
+  left: 1.5rem;
+  right: 1.5rem;
+  height: 3px;
+  background: #ffd89b;
+  border-radius: 2px 2px 0 0;
+}
+
+.admin-nav-icon {
+  font-size: 1.2rem;
+  width: 24px;
+  text-align: center;
+}
+
+/* ========================================
+   NAVBAR ACTIONS (RIGHT SIDE)
+   ======================================== */
+
+.admin-navbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  flex-shrink: 0;
+  margin-left: auto;
+}
+
+.admin-notification-icon {
+  font-size: 1.4rem;
+  cursor: pointer;
+  transition: transform 0.3s ease-out;
+  line-height: 1;
+}
+
+.admin-notification-icon:hover {
+  transform: scale(1.2) rotate(15deg);
+}
+
+/* User Info in Navbar */
+.admin-user-info-navbar {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 0.5rem 1rem;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.admin-user-avatar-navbar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  border: 1.5px solid rgba(255, 255, 255, 0.3);
+  flex-shrink: 0;
+}
+
+.admin-user-details-navbar {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.admin-user-details-navbar h5 {
+  margin: 0;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: white;
+}
+
+.admin-user-details-navbar p {
+  margin: 0;
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* Logout Button */
+.admin-logout-btn {
+  padding: 0.6rem 1.2rem;
+  background: rgba(255, 255, 255, 0.15);
+  color: white;
+  border: 1.5px solid rgba(255, 255, 255, 0.3);
+  border-radius: 0.6rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  font-size: 0.9rem;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.admin-logout-btn:hover {
+  background: rgba(255, 255, 255, 0.25);
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* ========================================
+   MAIN CONTENT AREA
+   ======================================== */
+
+.admin-main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.admin-page-content {
+  flex: 1;
+  padding: 2rem;
+  overflow-y: auto;
+  animation: slideInUp 0.5s ease-out 0.1s backwards;
+}
+
+/* ========================================
+   MOBILE MENU TOGGLE
+   ======================================== */
+
+.admin-menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: white;
+  padding: 0.5rem;
+  transition: transform 0.3s ease-out;
+}
+
+.admin-menu-toggle:hover {
+  transform: scale(1.1);
+}
+
+/* ========================================
+   RESPONSIVE DESIGN
+   ======================================== */
+
+@media (max-width: 1024px) {
+  .admin-navbar {
+    padding: 0 1.2rem;
+    height: 65px;
+    gap: 1rem;
+  }
+
+  .admin-navbar-title {
+    font-size: 1.2rem;
+  }
+
+  .admin-nav-link {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.95rem;
+  }
+
+  .admin-page-content {
+    padding: 1.5rem;
+  }
+
+  .admin-user-details-navbar {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .admin-navbar {
+    height: 60px;
+    padding: 0 1rem;
+    gap: 0.8rem;
+  }
+
+  .admin-navbar-brand {
+    flex: 0 0 auto;
+  }
+
+  .admin-navbar-title {
+    font-size: 1.1rem;
+  }
+
+  .admin-menu-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    order: -1;
+  }
+
+  .admin-nav-wrapper {
+    display: none;
+    flex: 1;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    right: 0;
+    background: linear-gradient(180deg, #667eea 0%, #764ba2 100%);
+    flex-direction: column;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    z-index: 999;
+  }
+
+  .admin-nav-wrapper.open {
+    display: flex;
+  }
+
+  .admin-nav-menu {
+    flex-direction: column;
+    width: 100%;
+    gap: 0;
+  }
+
+  .admin-nav-item {
+    width: 100%;
+  }
+
+  .admin-nav-link {
+    width: 100%;
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    justify-content: flex-start;
+    font-size: 1rem;
+  }
+
+  .admin-nav-link.active {
+    background: rgba(255, 255, 255, 0.15);
+    border-bottom-color: rgba(255, 255, 255, 0.3);
+  }
+
+  .admin-navbar-actions {
+    gap: 0.8rem;
+  }
+
+  .admin-user-info-navbar {
+    display: none;
+  }
+
+  .admin-logout-btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.8rem;
+  }
+
+  .admin-page-content {
+    padding: 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .admin-navbar {
+    height: 55px;
+    padding: 0 0.8rem;
+  }
+
+  .admin-navbar-title {
+    font-size: 1rem;
+  }
+
+  .admin-nav-link {
+    padding: 0.8rem 1.2rem;
+    font-size: 0.9rem;
+  }
+
+  .admin-notification-icon {
+    font-size: 1.2rem;
+  }
+
+  .admin-logout-btn {
+    padding: 0.5rem 0.8rem;
+    font-size: 0.75rem;
+  }
+
+  .admin-page-content {
+    padding: 1rem;
+  }
+}
+
+/* ========================================
+   ANIMATIONS
+   ======================================== */
+
+@keyframes slideInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ========================================
+   DARK MODE SUPPORT
+   ======================================== */
+
+/* @media (prefers-color-scheme: dark) {
+  .admin-layout-wrapper {
+    background: #1a1a2e;
+  }
+
+  .admin-page-content {
+    background: #1a1a2e;
+  }
+} */
+
+/* ========================================
+   ACCESSIBILITY
+   ======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .admin-navbar,
+  .admin-nav-link,
+  .admin-page-content,
+  .admin-logout-btn,
+  .admin-menu-toggle,
+  .admin-notification-icon {
+    animation: none;
+    transition: none;
+  }
+}
+
+/* ========================================
+   PRINT STYLES
+   ======================================== */
+
+@media print {
+  .admin-navbar,
+  .admin-menu-toggle {
+    display: none;
+  }
+
+  .admin-page-content {
+    padding: 0;
+  }
+}
