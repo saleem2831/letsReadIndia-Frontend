@@ -13,7 +13,9 @@ import ImageSlider from "./ImageSlider";
 
 
 
-const BASE_URL = "http://localhost:4000";
+// const BASE_URL = "http://localhost:4000";
+const BASE_URL = "https://lets-read-india-backend.vercel.app/";
+
 
 
 export default function ProductsCrud() {
@@ -49,7 +51,8 @@ export default function ProductsCrud() {
   const load = async () => {
     try {
       const res = await fetch(
-        `http://localhost:4000/api/products/admin/list?page=${page}`,
+        // `http://localhost:4000/api/products/admin/list?page=${page}`,
+        "https://lets-read-india-backend.vercel.app/api/products/admin/list?page=${page}",
         {
           headers: { Authorization: `Bearer ${token}` },
         }

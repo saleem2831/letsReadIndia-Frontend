@@ -246,6 +246,8 @@ export const getCustomerOrder = async (orderNumber) => {
 /* Download invoice */
 export const downloadInvoice = async (orderNumber) => {
   const res = await fetch(`${API_URL}/customer/order/${orderNumber}/invoice`);
+    // const res = await fetch(`http://localhost:4000/api/customer/order/${orderNumber}/invoice`);
+
 
   const blob = await res.blob();
   const url = window.URL.createObjectURL(blob);
