@@ -2,7 +2,8 @@
 
 import axios from "axios";
 
-const API_URL = "http://localhost:4000/api";
+// const API_URL = "http://localhost:4000/api";
+const API_URL = "https://lets-read-india-backend.vercel.app/api"
 
 // =====================
 // AUTH
@@ -37,29 +38,9 @@ export const getProductById = async (id) => {
 // PRODUCTS (SUPER ADMIN)
 // =====================
 
-// ⚠️ uses your existing PUT /products/:id
-// export const updateProductStatus = async (id, status, token) => {
-//   const res = await fetch(`${API_URL}/products/${id}`, {
-//     method: "PUT",
-//     headers: {
-//       "Content-Type": "application/json",
-//       Authorization: `Bearer ${token}`,
-//     },
-//     body: JSON.stringify({ status }),
-//   });
-//   return res.json();
-// };
 
-// DELETE PRODUCT
-// export const deleteProduct = async (id, token) => {
-//   const res = await fetch(`${API_URL}/products/${id}`, {
-//     method: "DELETE",
-//     headers: {
-//       Authorization: `Bearer ${token}`,
-//     },
-//   });
-//   return res.json();
-// };
+
+
 
 // ⚠️ ADMIN PRODUCT LIST (YOU NEED TO ADD THIS BACKEND ROUTE)
 // GET /products/admin/list?page=1
@@ -105,15 +86,7 @@ export const updateAdminStatus = async (id, status, token) => {
   return res.json();
 };
 
-// export const deleteAdmin = async (id, token) => {
-//   const res = await fetch(`${API_URL}/admin/${id}`, {
-//     method: "DELETE",
-//     headers: {
-//       Authorization: `Bearer ${token}`,
-//     },
-//   });
-//   return res.json();
-// };
+
 
 export const deleteAdmin = async (id, newAdminId, token) => {
   const res = await fetch(`${API_URL}/admin/${id}`, {
@@ -168,29 +141,6 @@ export const getMyOrders = async (token) => {
 
 // Recently added 
 
-// export const createProduct = async (formData, token) => {
-//   const res = await fetch(`${API_URL}/products`, {
-//     method: "POST",
-//     headers: {
-//       Authorization: `Bearer ${token}`,
-//     },
-//     body: formData,
-//   });
-
-//   return res.json();
-// };
-
-// export const updateProduct = async (id, formData, token) => {
-//   const res = await fetch(`${API_URL}/products/${id}`, {
-//     method: "PUT",
-//     headers: {
-//       Authorization: `Bearer ${token}`,
-//     },
-//     body: formData,
-//   });
-
-//   return res.json();
-// };
 
 
 
@@ -235,42 +185,6 @@ export const updateAdmin = async (id, data, token) => {
 
 /* ================= ADMIN DASHBOARD ================= */
 
-// export const getAdminDashboard = async (token) => {
-//   const res = await fetch(`${API_URL}/admin/dashboard`, {
-//     method: "GET",
-//     headers: {
-//       "Content-Type": "application/json",
-//       Authorization: `Bearer ${token}`,
-//     },
-//   });
-
-//   return res.json();
-// };
-
-// export const getAssignedOrders = async (page = 1, token) => {
-//   const res = await fetch(`${API_URL}/admin/orders?page=${page}`, {
-//     method: "GET",
-//     headers: {
-//       "Content-Type": "application/json",
-//       Authorization: `Bearer ${token}`,
-//     },
-//   });
-
-//   return res.json();
-// };
-
-// export const updateOrderStatus = async (orderId, status, token) => {
-//   const res = await fetch(`${API_URL}/admin/orders/${orderId}/status`, {
-//     method: "PUT",
-//     headers: {
-//       "Content-Type": "application/json",
-//       Authorization: `Bearer ${token}`,
-//     },
-//     body: JSON.stringify({ status }),
-//   });
-
-//   return res.json();
-// };
 
 
 /* ADMIN DASHBOARD STATS */
@@ -387,7 +301,8 @@ export const requestReturn = async (data) => {
 
 // Get all return requests
 export const getReturns = async () => {
-  const res = await fetch("http://localhost:4000/api/admin/returns", {
+      const res = await fetch(`${API_URL}/admin/returns`, {
+
     headers: {
       "Content-Type": "application/json",
       Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -400,7 +315,7 @@ export const getReturns = async () => {
 // Approve / Reject return
 export const updateReturnStatus = async (id, status) => {
   const res = await fetch(
-    `http://localhost:4000/api/admin/returns/${id}`,
+    `${API_URL}/admin/returns/${id}`,
     {
       method: "PUT",
       headers: {
@@ -417,14 +332,14 @@ export const updateReturnStatus = async (id, status) => {
 
 export const approveReturn = async (id) => {
   const res = await axios.put(
-    `http://localhost:4000/api/admin/returns/${id}/approve`
+    `${API_URL}/admin/returns/${id}/approve`
   );
   return res.data;
 };
 
 export const schedulePickup = async (id) => {
   const res = await axios.put(
-    `http://localhost:4000/api/admin/returns/${id}/schedule`
+    `${API_URL}/admin/returns/${id}/schedule`
   );
   return res.data;
 };
@@ -442,7 +357,8 @@ export const getCustomerReturnOrder = async (orderNumber) => {
 // Parent Form Submission
 // ===============================
 export const submitParentInquiry = async (formData) => {
-  const res = await fetch("http://localhost:4000/api/forms/parent", {
+      const res = await fetch(`${API_URL}/forms/parent`, {
+
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(formData),
@@ -461,7 +377,8 @@ export const submitParentInquiry = async (formData) => {
 // School Form Submission
 // ===============================
 export const submitSchoolInquiry = async (formData) => {
-  const res = await fetch("http://localhost:4000/api/forms/school", {
+      const res = await fetch(`${API_URL}/forms/school`, {
+
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -473,7 +390,8 @@ export const submitSchoolInquiry = async (formData) => {
 };
 
 export const submitContactForm = async (formData) => {
-  const res = await fetch("http://localhost:4000/api/forms/contact", {
+      const res = await fetch(`${API_URL}/forms/contact`, {
+
     method: "POST",
     headers: {
       "Content-Type": "application/json",
