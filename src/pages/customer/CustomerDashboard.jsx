@@ -195,7 +195,7 @@ const handleReturn = async (orderId, orderItemId) => {
     <div className="status-item">
       <div className="status-label">
         <span className="status-label-icon">🔎</span>
-        Tracking ID
+        Tracking ID / AWB 
       </div>
       <div className="status-value shipped">
         {data.order.waybill}

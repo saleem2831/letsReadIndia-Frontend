@@ -52,16 +52,39 @@ const openShipModal = (orderId) => {
 
 
 
-const handleShipOrder = async () => {
-  if (!dimensions.weight || !dimensions.length || !dimensions.breadth || !dimensions.height) {
-    alert("Please enter all dimensions");
-    return;
-  }
+// const handleShipOrder = async () => {
+//   if (!dimensions.weight || !dimensions.length || !dimensions.breadth || !dimensions.height) {
+//     alert("Please enter all dimensions");
+//     return;
+//   }
 
+//   try {
+//     setShippingLoading(true);
+
+//     await shipOrder(shippingOrderId, dimensions, token);
+
+//     setOrders((prev) =>
+//       prev.map((o) =>
+//         o.id === shippingOrderId ? { ...o, status: "shipped" } : o
+//       )
+//     );
+
+//     setShipModal(false);
+//     alert("Order shipped successfully 🚚");
+
+//   } catch (err) {
+//     alert("Shipping failed");
+//   } finally {
+//     setShippingLoading(false);
+//   }
+// };
+
+
+const handleShipOrder = async () => {
   try {
     setShippingLoading(true);
 
-    await shipOrder(shippingOrderId, dimensions, token);
+    await shipOrder(shippingOrderId, {}, token); // ✅ EMPTY BODY
 
     setOrders((prev) =>
       prev.map((o) =>
@@ -78,7 +101,6 @@ const handleShipOrder = async () => {
     setShippingLoading(false);
   }
 };
-
 
   useEffect(() => {
     loadData();
@@ -335,53 +357,24 @@ const handleShipOrder = async () => {
 
         {/* {} */}
 
-        {shipModal && (
+       {shipModal && (
   <div className="modal-overlay" onClick={() => setShipModal(false)}>
     <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-      <h3 className="modal-title">📦 Enter Box Details</h3>
+      
+      <h3 className="modal-title">📦 Confirm Shipment</h3>
 
-      <div className="modal-items-list">
-        <input
-          type="number"
-          placeholder="Weight (kg)"
-          value={dimensions.weight}
-          onChange={(e) =>
-            setDimensions({ ...dimensions, weight: e.target.value })
-          }
-        />
-        <input
-          type="number"
-          placeholder="Length (cm)"
-          value={dimensions.length}
-          onChange={(e) =>
-            setDimensions({ ...dimensions, length: e.target.value })
-          }
-        />
-        <input
-          type="number"
-          placeholder="Breadth (cm)"
-          value={dimensions.breadth}
-          onChange={(e) =>
-            setDimensions({ ...dimensions, breadth: e.target.value })
-          }
-        />
-        <input
-          type="number"
-          placeholder="Height (cm)"
-          value={dimensions.height}
-          onChange={(e) =>
-            setDimensions({ ...dimensions, height: e.target.value })
-          }
-        />
-      </div>
+      <p style={{ textAlign: "center", margin: "15px 0" }}>
+        This will automatically generate AWB and assign the best courier.
+      </p>
 
       <button
         onClick={handleShipOrder}
         disabled={shippingLoading}
         className="modal-close-btn"
       >
-        {shippingLoading ? "Processing..." : "Generate AWB"}
+        {shippingLoading ? "Processing..." : "Generate AWB 🚚"}
       </button>
+
     </div>
   </div>
 )}

@@ -28,6 +28,12 @@ export default function Navbar() {
     studentCount: ""
   });
 
+  const [parentLoading, setParentLoading] = useState(false);
+const [schoolLoading, setSchoolLoading] = useState(false);
+
+const [parentSuccess, setParentSuccess] = useState("");
+const [schoolSuccess, setSchoolSuccess] = useState("");
+
   const handleParentChange = (e) => {
     setParentForm({ ...parentForm, [e.target.name]: e.target.value });
   };
@@ -36,79 +42,102 @@ export default function Navbar() {
     setSchoolForm({ ...schoolForm, [e.target.name]: e.target.value });
   };
 
-  // const handleParentSubmit = (e) => {
-  //   e.preventDefault();
-  //   console.log("Parent Form:", parentForm);
-  //   alert("Thank you! We will contact you soon.");
-  //   setParentForm({ name: "", email: "", phone: "", childAge: "" });
-  //   setShowParentForm(false);
-  // };
+
+
+// const handleParentSubmit = async (e) => {
+//   e.preventDefault();
+
+//   try {
+//     const data = await submitParentInquiry(parentForm);
+//     alert(data.message);
+//   } catch (error) {
+//     console.error("Full Error:", error);
+//     alert(error.message || "Something went wrong");
+//   }
+// };
 
 
 const handleParentSubmit = async (e) => {
   e.preventDefault();
 
   try {
+    setParentLoading(true);
+    setParentSuccess("");
+
     const data = await submitParentInquiry(parentForm);
-    alert(data.message);
+
+    setParentSuccess("✅ Registered successfully!");
+
+    // reset form
+    setParentForm({
+      name: "",
+      email: "",
+      phone: "",
+      childAge: ""
+    });
+
+    // auto close after 2 sec
+    setTimeout(() => {
+      setShowParentForm(false);
+      setParentSuccess("");
+    }, 2000);
+
   } catch (error) {
-    console.error("Full Error:", error);
-    alert(error.message || "Something went wrong");
+    setParentSuccess("❌ Something went wrong");
+  } finally {
+    setParentLoading(false);
   }
 };
 
-const handleSchoolSubmit = async (e) => {
-  e.preventDefault();
-
-  try {
-    const data = await submitSchoolInquiry(schoolForm);
-    alert(data.message);
-  } catch (error) {
-    console.error("Full Error:", error);
-    alert(error.message || "Something went wrong");
-  }
-};
-
-
-  // const handleSchoolSubmit = (e) => {
-  //   e.preventDefault();
-  //   console.log("School Form:", schoolForm);
-  //   alert("Thank you! We will contact you soon.");
-  //   setSchoolForm({ schoolName: "", contactPerson: "", email: "", phone: "", studentCount: "" });
-  //   setShowSchoolForm(false);
-  // };
-
-
-//   const handleSchoolSubmit = async (e) => {
+// const handleSchoolSubmit = async (e) => {
 //   e.preventDefault();
 
 //   try {
 //     const data = await submitSchoolInquiry(schoolForm);
 //     alert(data.message);
-
-//     setSchoolForm({
-//       schoolName: "",
-//       contactPerson: "",
-//       email: "",
-//       phone: "",
-//       studentCount: "",
-//     });
 //   } catch (error) {
-//     alert("Something went wrong");
+//     console.error("Full Error:", error);
+//     alert(error.message || "Something went wrong");
 //   }
 // };
 
+
+const handleSchoolSubmit = async (e) => {
+  e.preventDefault();
+
+  try {
+    setSchoolLoading(true);
+    setSchoolSuccess("");
+
+    const data = await submitSchoolInquiry(schoolForm);
+
+    setSchoolSuccess("✅ Registered successfully!");
+
+    setSchoolForm({
+      schoolName: "",
+      contactPerson: "",
+      email: "",
+      phone: "",
+      studentCount: ""
+    });
+
+    setTimeout(() => {
+      setShowSchoolForm(false);
+      setSchoolSuccess("");
+    }, 2000);
+
+  } catch (error) {
+    setSchoolSuccess("❌ Something went wrong");
+  } finally {
+    setSchoolLoading(false);
+  }
+};
+
+
+
   return (
     <>
-      {/* ===== Top Banner ===== */}
-      {/* <div className="top-banner">
-        <div className="banner-container">
-          <span>
-            🎁 Free Reading Age Check for your child/class — Book a 10-min call
-          </span>
-          <button className="book-btn">Book Now</button>
-        </div>
-      </div> */}
+
 
       {/* ===== Main Navbar ===== */}
       <nav className="navbar">
@@ -233,8 +262,16 @@ const handleSchoolSubmit = async (e) => {
                 />
               </div>
 
-              <button type="submit" className="modal-submit-btn">Register Now</button>
+              {/* <button type="submit" className="modal-submit-btn">Register Now</button> */}
+              <button type="submit" className="modal-submit-btn" disabled={parentLoading}>
+  {parentLoading ? "Submitting..." : "Register Now"}
+</button>
             </form>
+            {parentSuccess && (
+  <p style={{ textAlign: "center", marginTop: "10px", color: "green" }}>
+    {parentSuccess}
+  </p>
+)}
           </div>
         </div>
       )}
@@ -314,8 +351,16 @@ const handleSchoolSubmit = async (e) => {
                 />
               </div>
 
-              <button type="submit" className="modal-submit-btn">Register School</button>
+              {/* <button type="submit" className="modal-submit-btn">Register School</button> */}
+              <button type="submit" className="modal-submit-btn" disabled={schoolLoading}>
+  {schoolLoading ? "Submitting..." : "Register School"}
+</button>
             </form>
+            {schoolSuccess && (
+  <p style={{ textAlign: "center", marginTop: "10px", color: "green" }}>
+    {schoolSuccess}
+  </p>
+)}
           </div>
         </div>
       )}
