@@ -103,10 +103,10 @@ export default function Products() {
                             <h2>{p.name}</h2>
                             <p className="product-desc">{p.description}</p>
                             
-                            <div className="product-rating">
+                            {/* <div className="product-rating">
                               <span className="stars">⭐⭐⭐⭐⭐</span>
                               <span className="rating-text">(24 reviews)</span>
-                            </div>
+                            </div> */}
 
                             <div className="card-footer">
                               <div className="price-section">
