@@ -60,7 +60,8 @@ const grandTotal = cartTotal - taxAmount;
       // 🧾 1️⃣ Create Razorpay order from backend
       const paymentRes = await fetch(
         // "http://localhost:4000/api/payments/create",
-        "https://lets-read-india-backend.vercel.app/api/payments/create",
+        "https://api.letsreadindia.in/api/payments/create",
+
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -101,7 +102,7 @@ const grandTotal = cartTotal - taxAmount;
 
             const orderRes = await fetch(
               // "http://localhost:4000/api/orders",
-              "https://lets-read-india-backend.vercel.app/api/orders",
+              "https://api.letsreadindia.in/api/orders",
               {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
