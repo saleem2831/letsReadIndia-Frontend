@@ -77,7 +77,7 @@ const grandTotal = cartTotal - taxAmount;
 
       // 💳 2️⃣ Razorpay options
       const options = {
-        key: "rzp_test_SCR5PXbtiFZ9CK",
+        key: "rzp_live_Sg2lUWMDUXzFRV",
         amount: paymentData.amount,
         currency: "INR",
         order_id: paymentData.orderId,
