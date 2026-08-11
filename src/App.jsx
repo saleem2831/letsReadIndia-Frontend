@@ -33,7 +33,13 @@ import SuperAdminDashboard from './pages/superAdmin/Dashboard';
 import AdminDashboard from './pages/admin/Dashboard';
 import CustomerDashboard from './pages/customer/CustomerDashboard';
 
-import AdminReturns from './pages/admin/AdminReturns'
+import AdminReturns from './pages/admin/AdminReturns';
+import JourneyTimeline from './components/home/JourneyTimeline';
+import ReadingAge from './pages/ReadingAge';
+import SuperAdminGallery from './pages/superAdmin/SuperAdminGallery';
+import Gallery from './pages/Gallery';
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+
 
 
 function App() {
@@ -49,9 +55,7 @@ function App() {
         <Route path="/products/:id" element={<ProductDetails />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/checkout" element={<Checkout />} />
-        {/* <Route path="/enquiry" element={<Enquiry />} />
-        <Route path="/admin/login" element={<AdminLogin />} />
-        <Route path="/admin/dashboard" element={<AdminDashboard />} /> */}
+
         <Route path="/order-success" element={<OrderSuccess />} />
         <Route path="/customer" element={<CustomerDashboard/>}/>
         <Route path="/about" element={<About />} />
@@ -61,6 +65,15 @@ function App() {
         
 
          <Route path="/login" element={<Login />} />
+             <Route path="/journey-timeline" element={<JourneyTimeline />} />
+             <Route path="/reading-age" element={<ReadingAge/>}/>
+             <Route path="/gallery" element={<Gallery />} />
+             <Route
+  path="/privacy-policy"
+  element={<PrivacyPolicy />}
+/>
+
+
 
           {/* SUPER ADMIN */}
       {/* <Route
@@ -90,7 +103,10 @@ function App() {
   <Route path="admins" element={<SuperAdminDashboard />} />
   <Route path="products" element={<ProductsCrud />} />
   <Route path="admin" element={<Admins />} />
-  
+  <Route path="/super-admin/gallery"
+  element={<SuperAdminGallery />}
+/>
+
 </Route>
 
 
@@ -117,6 +133,7 @@ function App() {
   <Route index element={<AdminDashboard />} />
   <Route path="orders" element={<MyOrders />} />
   <Route path="returns" element={<AdminReturns />} />
+
 
 </Route>
       </Routes>

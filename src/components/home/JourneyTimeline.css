@@ -1,0 +1,465 @@
+/* ============================
+   Google Font
+============================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+/* ============================
+   HERO
+============================ */
+
+.journey-hero{
+
+    height:70vh;
+
+    background:linear-gradient(rgba(18,33,73,.65),rgba(18,33,73,.65)),
+    url("https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?w=1600") center/cover;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    text-align:center;
+
+    color:white;
+
+    padding:20px;
+
+}
+
+.hero-overlay{
+
+    max-width:900px;
+
+}
+
+.hero-overlay h1{
+
+    font-size:64px;
+
+    margin-bottom:20px;
+
+    font-weight:700;
+
+}
+
+.hero-overlay p{
+
+    font-size:20px;
+
+    line-height:1.8;
+
+    margin-bottom:40px;
+
+}
+
+.hero-btn{
+
+    display:inline-block;
+
+    padding:16px 40px;
+
+    background:#ff5a8a;
+
+    color:white;
+
+    text-decoration:none;
+
+    border-radius:50px;
+
+    font-weight:600;
+
+    transition:.3s;
+
+}
+
+.hero-btn:hover{
+
+    background:#e94274;
+
+    transform:translateY(-3px);
+
+}
+
+/* ============================
+   CONTAINER
+============================ */
+
+.container{
+
+    width:90%;
+
+    max-width:1250px;
+
+    margin:auto;
+
+}
+
+/* ============================
+   TIMELINE
+============================ */
+
+.timeline-section{
+
+    padding:80px 0;
+
+    background:#f8fafc;
+
+}
+
+.section-title{
+
+    text-align:center;
+
+    margin-bottom:70px;
+
+}
+
+.section-title h2{
+
+    font-size:44px;
+
+    color:#222;
+
+    margin-bottom:15px;
+
+}
+
+.section-title p{
+
+    max-width:750px;
+
+    margin:auto;
+
+    color:#666;
+
+    font-size:18px;
+
+    line-height:1.8;
+
+}
+
+.timeline-row{
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:50px;
+
+    align-items:center;
+
+    margin-bottom:70px;
+
+}
+
+.timeline-row.reverse{
+
+    direction:rtl;
+
+}
+
+.timeline-row.reverse .timeline-content{
+
+    direction:ltr;
+
+}
+
+.timeline-image img{
+
+    width:100%;
+
+    height:350px;
+
+    object-fit:cover;
+
+    border-radius:22px;
+
+    box-shadow:0 20px 40px rgba(0,0,0,.12);
+
+    transition:.4s;
+
+}
+
+.timeline-image img:hover{
+
+    transform:scale(1.03);
+
+}
+
+.timeline-content{
+
+    background:white;
+
+    padding:35px;
+
+    border-radius:22px;
+
+    box-shadow:0 10px 35px rgba(0,0,0,.08);
+
+}
+
+.timeline-content span{
+
+    color:#7b2ff7;
+
+    font-weight:700;
+
+    font-size:18px;
+
+}
+
+.timeline-content h3{
+
+    font-size:34px;
+
+    margin:12px 0 20px;
+
+    color:#222;
+
+}
+
+.timeline-content p{
+
+    font-size:17px;
+
+    line-height:1.9;
+
+    color:#666;
+
+}
+
+/* ============================
+   IMPACT
+============================ */
+
+.impact-section{
+
+    padding:80px 5%;
+
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:30px;
+
+    background:white;
+
+}
+
+.impact-card{
+
+    background:#ffffff;
+
+    text-align:center;
+
+    padding:35px;
+
+    border-radius:18px;
+
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+
+    transition:.3s;
+
+}
+
+.impact-card:hover{
+
+    transform:translateY(-6px);
+
+}
+
+.impact-card h2{
+
+    font-size:48px;
+
+    color:#7b2ff7;
+
+    margin-bottom:10px;
+
+}
+
+.impact-card p{
+
+    color:#666;
+
+}
+
+/* ============================
+   CTA
+============================ */
+
+.journey-cta{
+
+    background:linear-gradient(135deg,#7b2ff7,#ff4d94);
+
+    color:white;
+
+    text-align:center;
+
+    padding:90px 20px;
+
+}
+
+.journey-cta h2{
+
+    font-size:46px;
+
+    margin-bottom:20px;
+
+}
+
+.journey-cta p{
+
+    max-width:700px;
+
+    margin:0 auto 35px;
+
+    line-height:1.8;
+
+    font-size:18px;
+
+}
+
+.journey-cta button{
+
+    border:none;
+
+    background:white;
+
+    color:#7b2ff7;
+
+    padding:15px 40px;
+
+    border-radius:50px;
+
+    font-size:17px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.journey-cta button:hover{
+
+    transform:translateY(-3px);
+
+}
+
+/* ============================
+   TABLET
+============================ */
+
+@media(max-width:992px){
+
+.hero-overlay h1{
+
+font-size:48px;
+
+}
+
+.timeline-row{
+
+grid-template-columns:1fr;
+
+gap:30px;
+
+}
+
+.timeline-row.reverse{
+
+direction:ltr;
+
+}
+
+.impact-section{
+
+grid-template-columns:repeat(2,1fr);
+
+}
+
+}
+
+/* ============================
+   MOBILE
+============================ */
+
+@media(max-width:768px){
+
+.journey-hero{
+
+height:60vh;
+
+}
+
+.hero-overlay h1{
+
+font-size:36px;
+
+}
+
+.hero-overlay p{
+
+font-size:16px;
+
+}
+
+.section-title h2{
+
+font-size:34px;
+
+}
+
+.timeline-image img{
+
+height:240px;
+
+}
+
+.timeline-content{
+
+padding:25px;
+
+}
+
+.timeline-content h3{
+
+font-size:28px;
+
+}
+
+.timeline-content p{
+
+font-size:16px;
+
+}
+
+.impact-section{
+
+grid-template-columns:1fr;
+
+}
+
+.journey-cta h2{
+
+font-size:32px;
+
+}
+
+}

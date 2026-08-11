@@ -170,3 +170,14 @@
     text-align: center;
   }
 }
+
+.footer-policy-link {
+  color: #ffffff !important;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.footer-policy-link:hover {
+  color: #ffffff !important;
+  opacity: 0.85;
+}

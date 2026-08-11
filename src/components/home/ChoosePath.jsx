@@ -55,7 +55,7 @@ export default function ChoosePath() {
 
             <p className="desc">
               Give your child the gift of confidence reading with our structured,
-              fun-filled home learning kits. Perfect for ages 3–12 - weather your child ia a beginner or a struggling reader, our product will add fun and reduce stress for teaching - learning at home.
+              fun-filled home learning kits. Perfect for ages 3–12 - weather your child is a beginner or a struggling reader, our product will add fun and reduce stress for teaching - learning at home.
             </p>
 
             <ul className="features">

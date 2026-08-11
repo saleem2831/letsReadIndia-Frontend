@@ -1,5 +1,6 @@
 import './footer.css';
 import { FaInstagram, FaWhatsapp, FaPhone, FaEnvelope } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 export default function Footer() {
   return (
@@ -91,7 +92,13 @@ export default function Footer() {
         <p>2026 Let's Read India. All rights reserved.</p>
 
         <div className="links">
-          <span>Privacy</span>
+          {/* <span><Link to="/privacy-policy">Privacy Policy</Link></span> */}
+          <Link
+  to="/privacy-policy"
+  className="footer-policy-link"
+>
+  Privacy Policy
+</Link>
           <span>•</span>
           <span>Terms</span>
           <span>•</span>

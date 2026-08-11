@@ -5,6 +5,9 @@ import ChoosePath from '../components/home/ChoosePath'
 import HowItWorks from '../components/home/HowItWorks'
 import Features from '../components/home/Features'
 import Testimonials from '../components/home/Testimonials'
+import YouTubeSection from '../components/home/YouTubeSection'
+import JourneyTimeline from '../components/home/JourneyTimeline'
+import JourneyPreview from '../components/home/JourneyPreview'
 
 export default function Home() {
   return (
@@ -12,6 +15,9 @@ export default function Home() {
       <Navbar />
       <Hero />
       <ChoosePath />
+      <YouTubeSection/>
+      <JourneyPreview/>
+      {/* <JourneyTimeline/> */}
       <HowItWorks />
       <Features />
       <Testimonials />

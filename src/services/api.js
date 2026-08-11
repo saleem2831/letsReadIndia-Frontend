@@ -409,3 +409,148 @@ export const submitContactForm = async (formData) => {
 
   return data;
 };
+
+//new one
+
+// ===============================
+// GALLERY - SUPER ADMIN
+// ===============================
+
+export const getGalleryImages = async () => {
+  const res = await fetch(`${API_URL}/gallery/images`);
+
+  if (!res.ok) {
+    throw new Error("Failed to fetch gallery images");
+  }
+
+  return res.json();
+};
+
+
+export const uploadGalleryImage = async (formData, token) => {
+  const res = await fetch(`${API_URL}/gallery/images`, {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+    body: formData,
+  });
+
+  const data = await res.json();
+
+  if (!res.ok) {
+    throw new Error(data.message || "Image upload failed");
+  }
+
+  return data;
+};
+
+
+export const updateGalleryImage = async (id, formData, token) => {
+  const res = await fetch(`${API_URL}/gallery/images/${id}`, {
+    method: "PUT",
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+    body: formData,
+  });
+
+  const data = await res.json();
+
+  if (!res.ok) {
+    throw new Error(data.message || "Image update failed");
+  }
+
+  return data;
+};
+
+
+export const deleteGalleryImage = async (id, token) => {
+  const res = await fetch(`${API_URL}/gallery/images/${id}`, {
+    method: "DELETE",
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+
+  const data = await res.json();
+
+  if (!res.ok) {
+    throw new Error(data.message || "Image delete failed");
+  }
+
+  return data;
+};
+
+
+// ===============================
+// GALLERY VIDEOS
+// ===============================
+
+export const getGalleryVideos = async () => {
+  const res = await fetch(`${API_URL}/gallery/videos`);
+
+  if (!res.ok) {
+    throw new Error("Failed to fetch gallery videos");
+  }
+
+  return res.json();
+};
+
+
+export const addGalleryVideo = async (data, token) => {
+  const res = await fetch(`${API_URL}/gallery/videos`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify(data),
+  });
+
+  const result = await res.json();
+
+  if (!res.ok) {
+    throw new Error(result.message || "Video creation failed");
+  }
+
+  return result;
+};
+
+
+export const updateGalleryVideo = async (id, data, token) => {
+  const res = await fetch(`${API_URL}/gallery/videos/${id}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify(data),
+  });
+
+  const result = await res.json();
+
+  if (!res.ok) {
+    throw new Error(result.message || "Video update failed");
+  }
+
+  return result;
+};
+
+
+export const deleteGalleryVideo = async (id, token) => {
+  const res = await fetch(`${API_URL}/gallery/videos/${id}`, {
+    method: "DELETE",
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+
+  const result = await res.json();
+
+  if (!res.ok) {
+    throw new Error(result.message || "Video delete failed");
+  }
+
+  return result;
+};

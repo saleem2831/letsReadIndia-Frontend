@@ -153,7 +153,10 @@ const handleSchoolSubmit = async (e) => {
             <li><Link to="/">Home</Link></li>
             <li><Link to="/about">About</Link></li>
             <li><Link to="/programs">Programs</Link></li>
+            <li><Link to="/reading-age">Reading Age</Link></li>
             <li><Link to="/products">Products</Link></li>
+            <li><Link to="/gallery">Gallery</Link></li>
+            <li><Link to="/journey-timeline">Journey</Link></li>
             <li><Link to="/contact">Contact</Link></li>
             <li><Link to="/faq">FAQ</Link></li>
           </ul>

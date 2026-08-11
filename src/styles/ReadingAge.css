@@ -1,0 +1,757 @@
+/* ===================================================
+   GOOGLE FONT
+=================================================== */
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap");
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#ffffff;
+    color:#222;
+}
+
+.container{
+    width:90%;
+    max-width:1280px;
+    margin:auto;
+}
+
+/* ===================================================
+   HERO SECTION
+=================================================== */
+
+.ra-hero{
+
+    min-height:90vh;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    text-align:center;
+
+    padding:100px 20px;
+
+    background:
+    linear-gradient(135deg,
+    rgba(34,43,89,.92),
+    rgba(102,63,187,.90)),
+    url("https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=1600&q=80");
+
+    background-size:cover;
+    background-position:center;
+
+    color:#fff;
+}
+
+.ra-overlay{
+
+    max-width:950px;
+
+}
+
+/* Badge */
+
+.ra-badge{
+
+    display:inline-block;
+
+    background:rgba(255,255,255,.18);
+
+    backdrop-filter:blur(8px);
+
+    padding:10px 22px;
+
+    border-radius:40px;
+
+    font-size:14px;
+
+    letter-spacing:.5px;
+
+    margin-bottom:30px;
+
+}
+
+/* Heading */
+
+.ra-overlay h1{
+
+    font-size:70px;
+
+    line-height:1.1;
+
+    margin-bottom:25px;
+
+    font-weight:700;
+
+}
+
+.ra-overlay h1 span{
+
+    color:#FFD54F;
+
+}
+
+/* Paragraph */
+
+.ra-overlay p{
+
+    max-width:780px;
+
+    margin:auto;
+
+    font-size:20px;
+
+    line-height:1.9;
+
+    color:#f3f3f3;
+
+    margin-bottom:45px;
+
+}
+
+/* ===================================================
+   BUTTONS
+=================================================== */
+
+.hero-buttons{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:20px;
+
+    flex-wrap:wrap;
+
+    margin-bottom:70px;
+
+}
+
+.primary-btn{
+
+    display:inline-block;
+
+    background:#ff4d94;
+
+    color:#fff;
+
+    padding:16px 38px;
+
+    border-radius:50px;
+
+    text-decoration:none;
+
+    font-weight:600;
+
+    transition:.3s;
+
+}
+
+.primary-btn:hover{
+
+    transform:translateY(-5px);
+
+    background:#ff2d79;
+
+    box-shadow:0 12px 30px rgba(255,77,148,.35);
+
+}
+
+.secondary-btn{
+
+    display:inline-block;
+
+    padding:16px 38px;
+
+    border:2px solid white;
+
+    color:white;
+
+    text-decoration:none;
+
+    border-radius:50px;
+
+    transition:.3s;
+
+}
+
+.secondary-btn:hover{
+
+    background:white;
+
+    color:#222;
+
+}
+
+/* ===================================================
+   HERO STATS
+=================================================== */
+
+.hero-stats{
+
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:25px;
+
+}
+
+.hero-stats div{
+
+    background:rgba(255,255,255,.12);
+
+    backdrop-filter:blur(10px);
+
+    padding:28px;
+
+    border-radius:18px;
+
+    transition:.35s;
+
+}
+
+.hero-stats div:hover{
+
+    transform:translateY(-8px);
+
+    background:rgba(255,255,255,.20);
+
+}
+
+.hero-stats h2{
+
+    font-size:42px;
+
+    color:#FFD54F;
+
+    margin-bottom:10px;
+
+}
+
+.hero-stats span{
+
+    color:white;
+
+    font-size:16px;
+
+}
+
+/* ===================================================
+   SECTION HEADER
+=================================================== */
+
+.reading-age-section{
+
+    padding:100px 0;
+
+    background:#fafbff;
+
+}
+
+.section-header{
+
+    text-align:center;
+
+    margin-bottom:70px;
+
+}
+
+.section-header span{
+
+    color:#7B2FF7;
+
+    font-weight:600;
+
+    letter-spacing:2px;
+
+    font-size:14px;
+
+}
+
+.section-header h2{
+
+    font-size:52px;
+
+    margin-top:15px;
+
+    margin-bottom:20px;
+
+    color:#222;
+
+}
+
+.section-header p{
+
+    max-width:850px;
+
+    margin:auto;
+
+    color:#666;
+
+    font-size:19px;
+
+    line-height:1.9;
+
+}
+
+/* ===================================================
+   READING CARDS
+=================================================== */
+
+.reading-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:30px;
+
+}
+
+.reading-card{
+
+    background:white;
+
+    border-radius:24px;
+
+    padding:40px;
+
+    text-align:center;
+
+    box-shadow:0 20px 45px rgba(0,0,0,.06);
+
+    transition:.35s;
+
+}
+
+.reading-card:hover{
+
+    transform:translateY(-10px);
+
+    box-shadow:0 25px 60px rgba(123,47,247,.18);
+
+}
+
+.reading-card .icon{
+
+    width:90px;
+
+    height:90px;
+
+    margin:auto;
+
+    border-radius:50%;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:42px;
+
+    background:linear-gradient(135deg,#7b2ff7,#ff4d94);
+
+    color:white;
+
+    margin-bottom:25px;
+
+}
+
+.reading-card h3{
+
+    font-size:28px;
+
+    margin-bottom:18px;
+
+    color:#222;
+
+}
+
+.reading-card p{
+
+    color:#666;
+
+    line-height:1.9;
+
+    font-size:17px;
+
+}
+
+/* ===================================================
+   SIMPLE FADE-UP ANIMATION
+=================================================== */
+
+.reading-card,
+.hero-stats div{
+
+    animation:fadeUp .8s ease both;
+
+}
+
+@keyframes fadeUp{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(35px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+
+/* ===================================================
+   COMPARISON SECTION
+=================================================== */
+
+.comparison-section{
+    padding:100px 0;
+    background:#ffffff;
+}
+
+.comparison-section .container{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:60px;
+    align-items:center;
+}
+
+.comparison-left span{
+    color:#7B2FF7;
+    font-size:14px;
+    font-weight:600;
+    letter-spacing:2px;
+}
+
+.comparison-left h2{
+    font-size:46px;
+    margin:18px 0;
+    color:#222;
+}
+
+.comparison-left p{
+    color:#666;
+    font-size:18px;
+    line-height:1.9;
+    margin-bottom:30px;
+}
+
+.comparison-left ul{
+    list-style:none;
+}
+
+.comparison-left li{
+    font-size:18px;
+    color:#444;
+    margin-bottom:18px;
+    padding-left:8px;
+}
+
+/* ============================
+   Comparison Card
+============================ */
+
+.comparison-box{
+    background:#fff;
+    border-radius:24px;
+    padding:40px;
+    box-shadow:0 20px 50px rgba(0,0,0,.08);
+}
+
+.comparison-box h3{
+    text-align:center;
+    font-size:30px;
+    margin-bottom:30px;
+    color:#222;
+}
+
+/* ============================
+   TABLE
+============================ */
+
+.comparison-box table{
+    width:100%;
+    border-collapse:collapse;
+    overflow:hidden;
+    border-radius:16px;
+}
+
+.comparison-box thead{
+    background:linear-gradient(135deg,#7B2FF7,#FF4D94);
+    color:#fff;
+}
+
+.comparison-box th{
+    padding:18px;
+    font-size:17px;
+}
+
+.comparison-box td{
+    padding:18px;
+    text-align:center;
+    border-bottom:1px solid #eee;
+    font-size:16px;
+}
+
+.comparison-box tbody tr:hover{
+    background:#f8f8ff;
+}
+
+/* ===================================================
+   CTA
+=================================================== */
+
+.reading-cta{
+
+    padding:100px 20px;
+
+    background:linear-gradient(135deg,#7B2FF7,#FF4D94);
+
+    color:#fff;
+
+    text-align:center;
+
+}
+
+.reading-cta h2{
+
+    font-size:48px;
+
+    max-width:900px;
+
+    margin:auto;
+
+    margin-bottom:25px;
+
+}
+
+.reading-cta p{
+
+    max-width:780px;
+
+    margin:auto;
+
+    font-size:19px;
+
+    line-height:1.9;
+
+    opacity:.95;
+
+    margin-bottom:40px;
+
+}
+
+.reading-cta .primary-btn{
+
+    background:white;
+
+    color:#7B2FF7;
+
+}
+
+.reading-cta .primary-btn:hover{
+
+    background:#fff;
+
+    transform:translateY(-4px);
+
+    box-shadow:0 15px 35px rgba(255,255,255,.35);
+
+}
+
+/* ===================================================
+   HOVER EFFECTS
+=================================================== */
+
+.comparison-box,
+.reading-card,
+.hero-stats div{
+
+    transition:.35s ease;
+
+}
+
+.comparison-box:hover{
+
+    transform:translateY(-8px);
+
+    box-shadow:0 30px 70px rgba(123,47,247,.15);
+
+}
+
+/* ===================================================
+   TABLET
+=================================================== */
+
+@media(max-width:992px){
+
+.ra-overlay h1{
+    font-size:52px;
+}
+
+.ra-overlay p{
+    font-size:18px;
+}
+
+.hero-stats{
+    grid-template-columns:repeat(2,1fr);
+}
+
+.reading-grid{
+    grid-template-columns:1fr;
+}
+
+.comparison-section .container{
+    grid-template-columns:1fr;
+}
+
+.section-header h2{
+    font-size:42px;
+}
+
+.comparison-left h2{
+    font-size:38px;
+}
+
+.reading-cta h2{
+    font-size:40px;
+}
+
+}
+
+/* ===================================================
+   MOBILE
+=================================================== */
+
+@media(max-width:768px){
+
+.ra-hero{
+    min-height:80vh;
+    padding:80px 20px;
+}
+
+.ra-overlay h1{
+    font-size:38px;
+}
+
+.ra-overlay p{
+    font-size:16px;
+}
+
+.hero-buttons{
+    flex-direction:column;
+}
+
+.primary-btn,
+.secondary-btn{
+    width:100%;
+    text-align:center;
+}
+
+.hero-stats{
+    grid-template-columns:1fr;
+}
+
+.hero-stats h2{
+    font-size:34px;
+}
+
+.section-header h2{
+    font-size:34px;
+}
+
+.section-header p{
+    font-size:16px;
+}
+
+.reading-card{
+    padding:30px;
+}
+
+.reading-card h3{
+    font-size:24px;
+}
+
+.reading-card p{
+    font-size:16px;
+}
+
+.comparison-left h2{
+    font-size:32px;
+}
+
+.comparison-left p,
+.comparison-left li{
+    font-size:16px;
+}
+
+.comparison-box{
+    padding:25px;
+    overflow-x:auto;
+}
+
+.comparison-box table{
+    min-width:500px;
+}
+
+.reading-cta{
+    padding:70px 20px;
+}
+
+.reading-cta h2{
+    font-size:32px;
+}
+
+.reading-cta p{
+    font-size:16px;
+}
+
+}
+
+/* ===================================================
+   LARGE SCREENS
+=================================================== */
+
+@media(min-width:1400px){
+
+.container{
+    max-width:1350px;
+}
+
+.ra-overlay h1{
+    font-size:68px;
+}
+
+.section-header h2{
+    font-size:58px;
+}
+
+.comparison-left h2{
+    font-size:52px;
+}
+
+}
