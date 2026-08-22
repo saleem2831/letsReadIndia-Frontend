@@ -1,6 +1,6 @@
 import './hero.css'
 // import main from "../../assets/main-image.png";
-import main from "../../assets/lets-read-hero.png";
+import main from "../../assets/lets-read-hero.PNG";
 
 export default function Hero() {
   return (
