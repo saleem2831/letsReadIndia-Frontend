@@ -17,7 +17,6 @@ export default function Home() {
       <ChoosePath />
       <YouTubeSection/>
       <JourneyPreview/>
-      {/* <JourneyTimeline/> */}
       <HowItWorks />
       <Features />
       <Testimonials />

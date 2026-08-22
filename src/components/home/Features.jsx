@@ -18,13 +18,65 @@ export default function Features() {
   }, []);
 
   const features = [
-    {
+    // {
+    //   icon: <FaCheckCircle />,
+    //   title: "ECA Badge Approved",
+    //   desc: "Recognized as an approved Extra Curricular Activity by leading CBSE and ICSE affiliated schools across India for holistic child development.",
+    //   color: "blue",
+    //   badge: "✓ VERIFIED BADGE",
+    // },
+      {
       icon: <FaCheckCircle />,
-      title: "ECA Badge Approved",
-      desc: "Recognized as an approved Extra Curricular Activity by leading CBSE and ICSE affiliated schools across India for holistic child development.",
+      title: "Founded by an educator’s on ground Experience",
+      desc: "Developed and tested by the founder through real work with children and educators that continues to evolve based on classroom experiences and learner needs.",
       color: "blue",
-      badge: "✓ VERIFIED BADGE",
+      badge: "",
     },
+        {
+      icon: <FaMicroscope />,
+      title: "Research-Backed Program",
+      desc: "Grounded in peer-reviewed research with published studies on kinesthetic learning methodologies and reading intervention effectiveness.",
+      color: "indigo",
+      badge: "✓ PHD BACKED",
+    },
+    
+    {
+      icon: <FaTrophy />,
+      title: "Dr Asma's Awards & Recognition",
+      desc: "Recipient of prestigious awards for educational innovation, founder expertise, and impact on child literacy across India.",
+      color: "orange",
+      badge: "✓ 8+ AWARDS",
+    },
+        {
+      icon: <FaClipboardList />,
+      title: "Bridging India’s reading gap",
+      desc: "Aligned with India’s foundational literacy goals under NIPUN Bharat.",
+      color: "orange",
+      badge: "",
+    },
+        {
+      icon: <FaClipboardList />,
+      title: "Designed for the Indian Classroom",
+      desc: "Aligned with the NCF 2022 framework.",
+      color: "orange",
+      badge: "",
+    },
+        {
+      icon: <FaClipboardList />,
+      title: "Made for Real-World Learning",
+      desc: "Used in National and International in schools in Asia and Africa as part of the foundational literacy curriculum.",
+      color: "orange",
+      badge: "",
+    },
+
+    
+    // {
+    //   icon: <FaClipboardList />,
+    //   title: "NEP 2020 & NCF 2022 Aligned",
+    //   desc: "Fully compliant with National Education Policy 2020 and National Curriculum Framework 2022 FLN standards.",
+    //   color: "teal",
+    //   badge: "✓ NIPUN BHARAT",
+    // },
     {
       icon: <FaHandshake />,
       title: "Corporate Partnerships",
@@ -33,33 +85,12 @@ export default function Features() {
       badge: "✓ 15+ PARTNERS",
     },
     {
-      icon: <FaTrophy />,
-      title: "Asma Awards & Recognition",
-      desc: "Recipient of prestigious awards for educational innovation, founder expertise, and impact on child literacy across India.",
-      color: "orange",
-      badge: "✓ 8+ AWARDS",
-    },
-    {
-      icon: <FaMicroscope />,
-      title: "Research-Backed Program",
-      desc: "Grounded in peer-reviewed research with published studies on kinesthetic learning methodologies and reading intervention effectiveness.",
-      color: "indigo",
-      badge: "✓ PHD BACKED",
-    },
-    {
       icon: <FaMedal />,
       title: "LR Recognition",
       desc: "Featured in leading edtech publications, media outlets, and educational journals for innovative literacy solutions.",
       color: "rose",
       badge: "✓ MEDIA FEATURED",
-    },
-    {
-      icon: <FaClipboardList />,
-      title: "NEP 2020 & NCF 2022 Aligned",
-      desc: "Fully compliant with National Education Policy 2020 and National Curriculum Framework 2022 FLN standards.",
-      color: "teal",
-      badge: "✓ NIPUN BHARAT",
-    },
+    }
   ];
 
   return (

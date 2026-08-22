@@ -1,5 +1,6 @@
 import './hero.css'
-import main from "../../assets/main-image.png";
+// import main from "../../assets/main-image.png";
+import main from "../../assets/lets-read-hero.png";
 
 export default function Hero() {
   return (
@@ -12,13 +13,25 @@ export default function Hero() {
       <div className="hero-container">
         {/* Left Content */}
         <div className="hero-content">
-          <h1 className="hero-headline">
+          {/* <h1 className="hero-headline">
             Kinesthetic Reading Kits &amp; Programs that Build Confident <span className="hero-highlight">Readers</span>
+          </h1> */}
+
+          <h1 className="hero-headline">
+              Bridging the Reading Gap in children          
           </h1>
 
-          <p className="hero-description">
+          {/* <p className="hero-description">
             Let's Read India helps children (3–12) move from <strong>phonics → comprehension → fluent reading</strong> through joyful, hands-on learning — at home and in school.
+          </p> */}
+
+               <p className="hero-description">
+            Helping children aged 3–12 build the skills to read and understand at the level needed for their age and grade. 
+            <p> <strong>Created by an Indian educator for learning English as a second language.</strong>          
+</p>
+
           </p>
+
 
           <div className="hero-buttons">
             <a href="/products" className="hero-btn hero-btn-primary">
