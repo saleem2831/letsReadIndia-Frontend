@@ -215,6 +215,10 @@ const handleReturn = async (orderId, orderItemId) => {
       </div>
     </div>
   )}
+
+  {data.order?.estimated_delivery_days && (
+    <div className="status-item"><div className="status-label">🗓 Estimated delivery</div><div className="status-value">{data.order.estimated_delivery_days} days</div></div>
+  )}
 </div>
 
 
@@ -222,9 +226,11 @@ const handleReturn = async (orderId, orderItemId) => {
             <div className="order-total">
               <div className="total-label">Total Amount</div>
               <div className="total-amount">
-                ₹ {Number(data.order.total).toLocaleString("en-IN")}
+                ₹ {Number(data.order.total).toLocaleString("en-IN")} {data.order.currency || "INR"}
               </div>
+              <small>Shipping: ₹{Number(data.order.delivery_fee || 0).toFixed(2)} • {data.order.shipping_mode || "domestic"}</small>
             </div>
+            {data.shipment_events?.length > 0 && <div className="items-section"><h3 className="items-title">🚚 Delivery updates</h3><div className="items-list">{data.shipment_events.map((event, eventIndex) => <div className="status-item" key={`${event.created_at}-${eventIndex}`}><strong>{event.shipment_status}</strong><span>{event.activity || "Shipment update"}</span><small>{event.location || ""} {new Date(event.event_time || event.created_at).toLocaleString()}</small></div>)}</div></div>}
             {/* RETURN & REFUND DETAILS */}
 {data.return && (
   <div className="order-total" style={{ marginTop: "20px" }}>

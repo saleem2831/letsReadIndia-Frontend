@@ -2,8 +2,14 @@
 
 import axios from "axios";
 
-// const API_URL = "http://localhost:4000/api";
- const API_URL =  "https://api.letsreadindia.in/api";
+export const API_URL = import.meta.env.VITE_API_URL || "http://localhost:4000/api";
+export const SOCKET_URL = API_URL.replace(/\/api\/?$/, "");
+
+const readJson = async (response) => {
+  const data = await response.json().catch(() => ({}));
+  if (!response.ok) throw new Error(data.message || "Request failed");
+  return data;
+};
 
 // =====================
 // AUTH
@@ -71,7 +77,7 @@ export const createAdmin = async (data, token) => {
     },
     body: JSON.stringify(data),
   });
-  return res.json();
+  return readJson(res);
 };
 
 export const updateAdminStatus = async (id, status, token) => {
@@ -83,7 +89,7 @@ export const updateAdminStatus = async (id, status, token) => {
     },
     body: JSON.stringify({ status }),
   });
-  return res.json();
+  return readJson(res);
 };
 
 
@@ -98,7 +104,41 @@ export const deleteAdmin = async (id, newAdminId, token) => {
     body: JSON.stringify({ newAdminId }),
   });
 
-  return res.json();
+  return readJson(res);
+};
+
+export const getSuperAdmins = async (token) => {
+  const res = await fetch(`${API_URL}/admin/super-admins`, {
+    headers: { Authorization: `Bearer ${token}` },
+  });
+  return readJson(res);
+};
+
+export const changeSuperAdminPassword = async (data, token) => {
+  const res = await fetch(`${API_URL}/admin/me/password`, {
+    method: "PUT",
+    headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
+    body: JSON.stringify(data),
+  });
+  return readJson(res);
+};
+
+export const getAllOrdersForSuperAdmin = async (filters, token) => {
+  const params = new URLSearchParams();
+  Object.entries(filters || {}).forEach(([key, value]) => {
+    if (value !== "" && value !== null && value !== undefined) params.set(key, value);
+  });
+  const res = await fetch(`${API_URL}/admin/all-orders?${params.toString()}`, {
+    headers: { Authorization: `Bearer ${token}` },
+  });
+  return readJson(res);
+};
+
+export const getAllOrderDetailsForSuperAdmin = async (orderId, token) => {
+  const res = await fetch(`${API_URL}/admin/all-orders/${orderId}`, {
+    headers: { Authorization: `Bearer ${token}` },
+  });
+  return readJson(res);
 };
 
 
@@ -115,14 +155,14 @@ export const updatePassword = async (id, password, token) => {
 };
 
 // ⚠️ PAGINATED ADMIN LIST (YOU NEED TO ADD THIS BACKEND)
-export const getAdmins = async (page = 1, token) => {
+export const getAdmins = async (page = 1, token, limit = 20) => {
   const res = await fetch(
-    `${API_URL}/admin?page=${page}`,
+    `${API_URL}/admin?page=${page}&limit=${limit}`,
     {
       headers: { Authorization: `Bearer ${token}` },
     }
   );
-  return res.json();
+  return readJson(res);
 };
 
 
@@ -178,7 +218,7 @@ export const updateAdmin = async (id, data, token) => {
     body: JSON.stringify(data),
   });
 
-  return res.json();
+  return readJson(res);
 };
 
 // Admin Page
@@ -192,7 +232,7 @@ export const getAdminDashboard = async (token) => {
   const res = await fetch(`${API_URL}/admin/dashboard`, {
     headers: { Authorization: `Bearer ${token}` },
   });
-  return res.json();
+  return readJson(res);
 };
 
 /* ASSIGNED ORDERS (with search + filter + pagination) */
@@ -207,7 +247,7 @@ export const getAssignedOrders = async (page, token, search = "", status = "") =
     headers: { Authorization: `Bearer ${token}` },
   });
 
-  return res.json();
+  return readJson(res);
 };
 
 /* UPDATE ORDER STATUS */
@@ -222,7 +262,7 @@ export const updateOrderStatus = async (id, status, token) => {
   });
   
 
-  return res.json();
+  return readJson(res);
 };
 
 /* 🔥 THIS WAS MISSING → ORDER DETAILS (items in order) */
@@ -231,7 +271,7 @@ export const getOrderDetails = async (orderId, token) => {
     headers: { Authorization: `Bearer ${token}` },
   });
 
-  return res.json();
+  return readJson(res);
 };
 
 
@@ -272,9 +312,7 @@ export const shipOrder = async (orderId, data, token) => {
     }
   );
 
-  if (!res.ok) throw new Error("Shipping failed");
-
-  return res.json();
+  return readJson(res);
 };
 
 export const requestReturn = async (data) => {
@@ -349,7 +387,7 @@ export const schedulePickup = async (id) => {
 
 export const getCustomerReturnOrder = async (orderNumber) => {
   const res = await fetch(
-    `${API_BASE_URL}/customer/track-order?orderNumber=${orderNumber}`
+    `${API_URL}/customer/track-order?orderNumber=${orderNumber}`
   );
 
   return res.json();

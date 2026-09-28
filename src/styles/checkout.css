@@ -78,7 +78,8 @@
 }
 
 .checkout-form input,
-.checkout-form textarea {
+.checkout-form textarea,
+.checkout-form select {
   padding: 14px 16px;
   border-radius: 10px;
   border: 2px solid #e0e0e0;
@@ -86,6 +87,9 @@
   font-family: 'Comic Sans MS', 'Comic Neue', cursive, sans-serif;
   transition: all 0.3s ease;
 }
+
+.coupon-entry{display:grid;grid-template-columns:1fr auto;gap:8px}.coupon-entry button{border:0;border-radius:8px;padding:0 16px;background:#5936ad;color:white;font-weight:700;cursor:pointer}
+.shipping-detail{display:block;color:#666;margin:-4px 0 12px}.discount-row{color:#16824b}.payment-note{font-size:12px;line-height:1.5;color:#666;margin-top:12px}.checkout-error{margin:14px 0;padding:10px;border-radius:8px;background:#ffe8ed;color:#9d1936}
 
 .checkout-form input:focus,
 .checkout-form textarea:focus {

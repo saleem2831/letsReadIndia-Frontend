@@ -1,0 +1,19 @@
+.orders-ops-page{max-width:1600px}
+.orders-ops-page header{display:flex;align-items:flex-start;justify-content:space-between;gap:18px}
+.orders-live,.orders-offline{display:inline-flex;align-items:center;gap:6px;padding:8px 12px;border-radius:999px;white-space:nowrap}
+.orders-live{background:#ddf8e9;color:#13713f}.orders-offline{background:#fff0d8;color:#8a5310}
+.orders-ops-summary{display:grid;grid-template-columns:repeat(7,minmax(130px,1fr));gap:12px;margin:20px 0}
+.orders-ops-summary>div{display:grid;gap:7px;padding:16px;background:#fff;border:1px solid #ebe7f4;border-radius:14px;box-shadow:0 5px 16px rgba(63,48,112,.07)}
+.orders-ops-summary small,.orders-ops-table small,.orders-detail-list small{display:block;color:#767080;margin-top:5px;line-height:1.4}
+.orders-ops-summary strong{font-size:1.15rem}
+.orders-ops-filters{display:grid;grid-template-columns:minmax(240px,2fr) auto repeat(3,minmax(145px,1fr));gap:10px;margin-bottom:18px}
+.orders-ops-filters input,.orders-ops-filters select,.orders-ops-filters button{min-height:44px;border:1px solid #ddd7eb;border-radius:10px;padding:9px 12px;background:#fff}
+.orders-ops-filters button{background:#6748bd;color:#fff;border:0;font-weight:700;cursor:pointer}
+.orders-ops-table{overflow:auto}.orders-ops-table table{min-width:1250px}.orders-ops-table td{vertical-align:top}
+.orders-mode,.orders-status{display:inline-block;padding:5px 9px;border-radius:999px;text-transform:capitalize;font-size:.78rem;font-weight:700}
+.orders-mode.domestic{background:#e7f1ff;color:#215da7}.orders-mode.international{background:#f2e9ff;color:#6634a9}
+.orders-status.pending{background:#fff3d7;color:#87540d}.orders-status.assigned{background:#e7efff;color:#315bad}.orders-status.shipped{background:#e4f8f1;color:#147050}.orders-status.delivered{background:#e4f7df;color:#287019}
+.orders-unassigned{color:#9a5c12}.orders-detail-modal{max-width:1050px}.orders-detail-list{display:grid;gap:8px;margin:10px 0 24px}
+.orders-detail-list>div{display:flex;align-items:flex-start;justify-content:space-between;gap:18px;padding:12px 14px;background:#f8f6fc;border-radius:10px}
+@media(max-width:1100px){.orders-ops-summary{grid-template-columns:repeat(3,1fr)}.orders-ops-filters{grid-template-columns:1fr 1fr}}
+@media(max-width:650px){.orders-ops-page header{display:grid}.orders-ops-summary,.orders-ops-filters{grid-template-columns:1fr 1fr}.orders-ops-filters input{grid-column:1/-1}.orders-detail-list>div{display:grid}}

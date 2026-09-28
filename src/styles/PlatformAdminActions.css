@@ -1,0 +1,9 @@
+.admin-actions,.modal-actions{display:flex;gap:7px;flex-wrap:wrap}
+.modal-actions{margin:18px 0}
+.admin-table-wrap .danger,.modal-actions .danger{background:#ffe1e6;color:#a8203c;border:0;border-radius:8px;padding:8px 12px;cursor:pointer}
+.admin-table-wrap .email-action,.modal-actions .email-action{background:#e8f0ff;color:#2452a4;border:0;border-radius:8px;padding:8px 12px;cursor:pointer}
+.admin-table-wrap .download-action,.modal-actions .download-action{background:#eee9fa;color:#5738a0;border:0;border-radius:8px;padding:8px 12px;cursor:pointer}
+.admin-actions button:disabled,.modal-actions button:disabled{opacity:.5;cursor:not-allowed}
+.email-ok,.email-failed{display:inline-block;padding:5px 9px;border-radius:999px;font-size:12px;font-weight:700}
+.email-ok{background:#dff6e8;color:#13713f}
+.email-failed{background:#ffe1e6;color:#a8203c}

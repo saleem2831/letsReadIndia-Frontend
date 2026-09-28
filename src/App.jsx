@@ -39,6 +39,10 @@ import ReadingAge from './pages/ReadingAge';
 import SuperAdminGallery from './pages/superAdmin/SuperAdminGallery';
 import Gallery from './pages/Gallery';
 import PrivacyPolicy from "./pages/PrivacyPolicy";
+import ReadingReadinessPopup from "./components/ReadingReadinessPopup";
+import Coupons from "./pages/superAdmin/Coupons";
+import ReadingAssessments from "./pages/superAdmin/ReadingAssessments";
+import SuperAdminOrders from "./pages/superAdmin/Orders";
 
 
 
@@ -49,6 +53,7 @@ function App() {
        <CartProvider>
     <BrowserRouter>
       <ScrollToTop />
+      <ReadingReadinessPopup />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/products" element={<Products />} />
@@ -101,8 +106,11 @@ function App() {
 >
   <Route index element={<SuperAdminDashboard />} />
   <Route path="admins" element={<SuperAdminDashboard />} />
+  <Route path="orders" element={<SuperAdminOrders />} />
   <Route path="products" element={<ProductsCrud />} />
   <Route path="admin" element={<Admins />} />
+  <Route path="coupons" element={<Coupons />} />
+  <Route path="reading-assessments" element={<ReadingAssessments />} />
   <Route path="/super-admin/gallery"
   element={<SuperAdminGallery />}
 />

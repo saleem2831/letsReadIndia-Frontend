@@ -1,6 +1,124 @@
-import './footer.css';
-import { FaInstagram, FaWhatsapp, FaPhone, FaEnvelope } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+// import './footer.css';
+// import { FaInstagram, FaWhatsapp, FaPhone, FaEnvelope } from 'react-icons/fa';
+// import { Link } from 'react-router-dom';
+
+// export default function Footer() {
+//   return (
+//     <footer className="footer">
+//       {/* TOP GLOW */}
+//       <div className="footer-glow"></div>
+
+//       <div className="footer-container">
+        
+//         {/* LEFT BRAND SECTION */}
+//         <div className="footer-brand">
+//           <div className="brand-header">
+//             {/* <div className="brand-logo">LR</div> */}
+
+//             <div>
+//               {/* <h2>LET'S READ</h2> */}
+//               <h2 >LITSOL LET'S READ PRIVATE LIMITED</h2>
+//               <p className="tagline">
+//                 Empowering young minds through literacy.
+//               </p>
+//             </div>
+//           </div>
+
+//           <p className="brand-desc">
+//             Reading kits, diagnostics and training to help children build
+//             strong reading foundations.
+//           </p>
+
+//           {/* SOCIAL */}
+//           <div className="social">
+//             <a href="https://instagram.com" className="icon instagram" title="Instagram">
+//               <FaInstagram />
+//             </a>
+//             <a href="https://wa.me/917058587080" className="icon whatsapp" title="WhatsApp">
+//               <FaWhatsapp />
+//             </a>
+//             <a href="tel:+917058587080" className="icon phone" title="Phone">
+//               <FaPhone />
+//             </a>
+//             <a href="mailto:sales@letsreadindia.in" className="icon mail" title="Email">
+//               <FaEnvelope />
+//             </a>
+//           </div>
+
+//           <div className="contact">
+//             <p>sales@letsreadindia.in</p>
+//             <p>+91 70585 87080</p>
+//           </div>
+//         </div>
+
+//         {/* COLUMN 1 */}
+//         <div>
+//           <h3>For Parents</h3>
+//           <ul>
+//             <li>Shop Kits</li>
+//             <li>Readiness Quiz</li>
+//             <li>Sample Activity</li>
+//             <li>FAQs</li>
+//           </ul>
+//         </div>
+
+//         {/* COLUMN 2 */}
+//         <div>
+//           <h3>For Schools</h3>
+//           <ul>
+//             <li>Program</li>
+//             <li>Diagnostic</li>
+//             <li>Training</li>
+//             <li>Case Studies</li>
+//             <li>Demo</li>
+//           </ul>
+//         </div>
+
+//         {/* COLUMN 3 */}
+//         <div>
+//           <h3>Resources</h3>
+//           <ul>
+//             <li>Articles</li>
+//             <li>Blog</li>
+//             <li>Research Paper</li>
+//             <li>Free Download</li>
+//             <li>Press</li>
+//             <li>Awards</li>
+//           </ul>
+//         </div>
+//       </div>
+
+//       {/* BOTTOM */}
+//       <div className="footer-bottom">
+//         <p>2026 Let's Read India. All rights reserved.</p>
+
+//         <div className="links">
+//           {/* <span><Link to="/privacy-policy">Privacy Policy</Link></span> */}
+//           <Link
+//   to="/privacy-policy"
+//   className="footer-policy-link"
+// >
+//   Privacy Policy
+// </Link>
+//           <span>•</span>
+//           <span>Terms</span>
+//           <span>•</span>
+//           <span>Refunds / Shipping</span>
+//         </div>
+//       </div>
+//     </footer>
+//   );
+// }
+
+
+import "./footer.css";
+import {
+  FaInstagram,
+  FaWhatsapp,
+  FaPhone,
+  FaEnvelope,
+} from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 export default function Footer() {
   return (
@@ -9,14 +127,12 @@ export default function Footer() {
       <div className="footer-glow"></div>
 
       <div className="footer-container">
-        
         {/* LEFT BRAND SECTION */}
         <div className="footer-brand">
           <div className="brand-header">
-            <div className="brand-logo">LR</div>
-
             <div>
-              <h2>LET'S READ</h2>
+              <h2>LITSOL LET&apos;S READ PRIVATE LIMITED</h2>
+
               <p className="tagline">
                 Empowering young minds through literacy.
               </p>
@@ -28,54 +144,128 @@ export default function Footer() {
             strong reading foundations.
           </p>
 
-          {/* SOCIAL */}
+          {/* SOCIAL LINKS */}
           <div className="social">
-            <a href="https://instagram.com" className="icon instagram" title="Instagram">
+            <a
+              href="https://instagram.com"
+              className="icon instagram"
+              title="Instagram"
+              aria-label="Instagram"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <FaInstagram />
             </a>
-            <a href="https://wa.me/917058587080" className="icon whatsapp" title="WhatsApp">
+
+            <a
+              href="https://wa.me/917058587080"
+              className="icon whatsapp"
+              title="WhatsApp"
+              aria-label="WhatsApp"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <FaWhatsapp />
             </a>
-            <a href="tel:+917058587080" className="icon phone" title="Phone">
+
+            <a
+              href="tel:+917058587080"
+              className="icon phone"
+              title="Phone"
+              aria-label="Phone"
+            >
               <FaPhone />
             </a>
-            <a href="mailto:sales@letsreadindia.in" className="icon mail" title="Email">
+
+            <a
+              href="mailto:sales@letsreadindia.in"
+              className="icon mail"
+              title="Email"
+              aria-label="Email"
+            >
               <FaEnvelope />
             </a>
           </div>
 
           <div className="contact">
-            <p>sales@letsreadindia.in</p>
-            <p>+91 70585 87080</p>
+            <p>
+              <a href="mailto:sales@letsreadindia.in">
+                sales@letsreadindia.in
+              </a>
+            </p>
+
+            <p>
+              <a href="tel:+917058587080">+91 70585 87080</a>
+            </p>
           </div>
         </div>
 
-        {/* COLUMN 1 */}
+        {/* FOR PARENTS */}
         <div>
           <h3>For Parents</h3>
+
           <ul>
-            <li>Shop Kits</li>
-            <li>Readiness Quiz</li>
-            <li>Sample Activity</li>
-            <li>FAQs</li>
+            <li>
+              <Link to="/products" className="footer-nav-link">
+                Shop Kits
+              </Link>
+            </li>
+
+            <li>
+              <Link to="/reading-age" className="footer-nav-link">
+                Readiness Quiz
+              </Link>
+            </li>
+
+            <li>
+              <Link to="/faq" className="footer-nav-link">
+                FAQs
+              </Link>
+            </li>
+
+            <li>
+              <Link to="/customer" className="footer-nav-link">
+                Track Order
+              </Link>
+            </li>
           </ul>
         </div>
 
-        {/* COLUMN 2 */}
+        {/* FOR SCHOOLS */}
         <div>
           <h3>For Schools</h3>
+
           <ul>
-            <li>Program</li>
-            <li>Diagnostic</li>
-            <li>Training</li>
-            <li>Case Studies</li>
-            <li>Demo</li>
+            <li>
+              <Link to="/programs" className="footer-nav-link">
+                Programs
+              </Link>
+            </li>
+
+            <li>
+              <Link to="/reading-age" className="footer-nav-link">
+                Diagnostic
+              </Link>
+            </li>
+
+            <li>
+              <Link to="/contact" className="footer-nav-link">
+                Training
+              </Link>
+            </li>
+
+            <li>
+              <Link to="/contact" className="footer-nav-link">
+                Demo
+              </Link>
+            </li>
           </ul>
         </div>
 
-        {/* COLUMN 3 */}
+        {/* RESOURCES */}
         <div>
           <h3>Resources</h3>
+
           <ul>
             <li>Articles</li>
             <li>Blog</li>
@@ -87,22 +277,19 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* BOTTOM */}
+      {/* FOOTER BOTTOM */}
       <div className="footer-bottom">
-        <p>2026 Let's Read India. All rights reserved.</p>
+        <p>© 2026 Let&apos;s Read India. All rights reserved.</p>
 
         <div className="links">
-          {/* <span><Link to="/privacy-policy">Privacy Policy</Link></span> */}
-          <Link
-  to="/privacy-policy"
-  className="footer-policy-link"
->
-  Privacy Policy
-</Link>
-          <span>•</span>
-          <span>Terms</span>
-          <span>•</span>
-          <span>Refunds / Shipping</span>
+          <Link to="/privacy-policy" className="footer-policy-link">
+            Privacy Policy
+          </Link>
+
+          {/* <span>•</span> */}
+          {/* <span>Terms</span> */}
+          {/* <span>•</span> */}
+          {/* <span>Refunds / Shipping</span> */}
         </div>
       </div>
     </footer>

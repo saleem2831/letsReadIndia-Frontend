@@ -1,5 +1,5 @@
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import Toast from "../../components/Toast";
 import {
   getProducts,
@@ -8,18 +8,21 @@ import {
   updateAdminStatus,
   deleteAdmin,
   updateAdmin,
+  getSuperAdmins,
+  changeSuperAdminPassword,
 } from "../../services/api";
 import "../../styles/SuperAdminDashboard.css";
 
 export default function SuperAdminPage() {
   const token = localStorage.getItem("token");
 
-  const [stats, setStats] = useState({ products: 0, admins: 0 });
+  const [stats, setStats] = useState({ products: 0, admins: 0, superAdmins: 0 });
   const [admins, setAdmins] = useState([]);
+  const [superAdmins, setSuperAdmins] = useState([]);
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
 
-  const [form, setForm] = useState({ name: "", email: "", password: "" });
+  const [form, setForm] = useState({ name: "", email: "", password: "", role: "admin" });
   const [editingId, setEditingId] = useState(null);
   const [showPassword, setShowPassword] = useState(false);
 
@@ -32,23 +35,30 @@ export default function SuperAdminPage() {
   const [deleteLoading, setDeleteLoading] = useState(false);
   const [toggleLoading, setToggleLoading] = useState(null);
   const [toast, setToast] = useState(null);
+  const [passwordForm, setPasswordForm] = useState({ current_password: "", new_password: "", confirm_password: "" });
+  const [passwordLoading, setPasswordLoading] = useState(false);
+
+  const loadAll = useCallback(async () => {
+    try {
+      const [products, res, superAdminRes] = await Promise.all([
+        getProducts(), getAdmins(page, token), getSuperAdmins(token),
+      ]);
+      setStats({
+        products: products.length,
+        admins: Number(res.total ?? res.data?.length ?? 0),
+        superAdmins: superAdminRes.data?.length || 0,
+      });
+      setAdmins(res.data || []);
+      setSuperAdmins(superAdminRes.data || []);
+      setTotalPages(res.totalPages || res.pages || 1);
+    } catch (error) {
+      setToast({ message: `Unable to load dashboard: ${error.message}`, duration: 4000 });
+    }
+  }, [page, token]);
 
   useEffect(() => {
     loadAll();
-  }, [page]);
-
-  const loadAll = async () => {
-    const products = await getProducts();
-    const res = await getAdmins(page, token);
-
-    setStats({
-      products: products.length,
-      admins: res.data.length,
-    });
-
-    setAdmins(res.data);
-    setTotalPages(res.totalPages || res.pages || 1);
-  };
+  }, [loadAll]);
 
   // CREATE OR UPDATE ADMIN
   const handleSubmit = async () => {
@@ -63,11 +73,11 @@ export default function SuperAdminPage() {
         await updateAdmin(editingId, form, token);
         setToast({ message: "Admin updated successfully!", duration: 3000 });
       } else {
-        await createAdmin({ ...form, role: "admin" }, token);
-        setToast({ message: "Admin created successfully!", duration: 3000 });
+        const result = await createAdmin(form, token);
+        setToast({ message: result.message, duration: 3000 });
       }
 
-      setForm({ name: "", email: "", password: "" });
+      setForm({ name: "", email: "", password: "", role: "admin" });
       setEditingId(null);
       loadAll();
     } catch (error) {
@@ -124,8 +134,28 @@ export default function SuperAdminPage() {
   // EDIT CLICK
   const startEdit = (admin) => {
     setEditingId(admin.id);
-    setForm({ name: admin.name, email: admin.email, password: "" });
+    setForm({ name: admin.name, email: admin.email, password: "", role: "admin" });
     window.scrollTo(0, 0);
+  };
+
+  const handlePasswordChange = async (event) => {
+    event.preventDefault();
+    if (passwordForm.new_password !== passwordForm.confirm_password) {
+      return setToast({ message: "New password and confirmation do not match", duration: 3000 });
+    }
+    setPasswordLoading(true);
+    try {
+      const result = await changeSuperAdminPassword({
+        current_password: passwordForm.current_password,
+        new_password: passwordForm.new_password,
+      }, token);
+      setPasswordForm({ current_password: "", new_password: "", confirm_password: "" });
+      setToast({ message: result.message, duration: 4000 });
+    } catch (error) {
+      setToast({ message: error.message, duration: 4000 });
+    } finally {
+      setPasswordLoading(false);
+    }
   };
 
   return (
@@ -141,6 +171,7 @@ export default function SuperAdminPage() {
         <div className="super-admin-dashboard-stats-grid">
           <StatCard title="🛍️ Total Products" value={stats.products} />
           <StatCard title="👥 Total Admins" value={stats.admins} />
+          <StatCard title="🛡️ Super Admins" value={stats.superAdmins} />
         </div>
 
         {/* CREATE / EDIT FORM */}
@@ -182,24 +213,51 @@ export default function SuperAdminPage() {
                 {showPassword ? "👁️" : "👁️‍🗨️"}
               </button>
             </div>
+            {!editingId && <select
+              className="super-admin-dashboard-form-input"
+              value={form.role}
+              onChange={(e) => setForm({ ...form, role: e.target.value })}
+            >
+              <option value="admin">Order Manager / Admin</option>
+              <option value="super_admin">Super Admin</option>
+            </select>}
           </div>
 
           <div className="super-admin-dashboard-form-button-group">
             <button onClick={handleSubmit} disabled={submitLoading} className="super-admin-dashboard-submit-btn">
-              {submitLoading ? "⏳ Processing..." : (editingId ? "📝 Update Admin" : "✅ Create Admin")}
+              {submitLoading ? "⏳ Processing..." : (editingId ? "📝 Update Admin" : `✅ Create ${form.role === "super_admin" ? "Super Admin" : "Admin"}`)}
             </button>
 
             {editingId && (
               <button
                 onClick={() => {
                   setEditingId(null);
-                  setForm({ name: "", email: "", password: "" });
+                  setForm({ name: "", email: "", password: "", role: "admin" });
                 }}
                 className="super-admin-dashboard-cancel-btn"
               >
                 ✖️ Cancel
               </button>
             )}
+          </div>
+        </div>
+
+        <div className="super-admin-security-grid">
+          <form className="super-admin-dashboard-create-admin-card" onSubmit={handlePasswordChange}>
+            <h2 className="super-admin-dashboard-form-title">🔐 Change My Password</h2>
+            <div className="super-admin-dashboard-form-grid security-fields">
+              <input required type="password" className="super-admin-dashboard-form-input" placeholder="Current password" value={passwordForm.current_password} onChange={(e) => setPasswordForm({ ...passwordForm, current_password: e.target.value })} />
+              <input required minLength="8" type="password" className="super-admin-dashboard-form-input" placeholder="New password (minimum 8 characters)" value={passwordForm.new_password} onChange={(e) => setPasswordForm({ ...passwordForm, new_password: e.target.value })} />
+              <input required minLength="8" type="password" className="super-admin-dashboard-form-input" placeholder="Confirm new password" value={passwordForm.confirm_password} onChange={(e) => setPasswordForm({ ...passwordForm, confirm_password: e.target.value })} />
+            </div>
+            <button className="super-admin-dashboard-submit-btn" disabled={passwordLoading}>{passwordLoading ? "Updating…" : "Change Password"}</button>
+          </form>
+
+          <div className="super-admin-dashboard-create-admin-card">
+            <h2 className="super-admin-dashboard-form-title">🛡️ Super Admin Accounts</h2>
+            <div className="super-admin-account-list">
+              {superAdmins.map((account) => <div key={account.id}><div><strong>{account.name}</strong><small>{account.email}</small></div><span className={account.status === "active" ? "account-active" : "account-inactive"}>{account.status}</span></div>)}
+            </div>
           </div>
         </div>
 

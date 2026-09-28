@@ -904,3 +904,60 @@
     font-size: 0.9rem;
   }
 }
+
+/* Operations and super-admin security additions */
+.super-admin-security-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(320px, .65fr);
+  gap: 1.5rem;
+}
+
+.super-admin-security-grid .super-admin-dashboard-create-admin-card {
+  margin-bottom: 2.5rem;
+}
+
+.security-fields {
+  grid-template-columns: 1fr;
+}
+
+.super-admin-account-list {
+  display: grid;
+  gap: .75rem;
+}
+
+.super-admin-account-list > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: .9rem 1rem;
+  background: #f8f7fc;
+  border: 1px solid #ece8f6;
+  border-radius: .8rem;
+}
+
+.super-admin-account-list strong,
+.super-admin-account-list small {
+  display: block;
+}
+
+.super-admin-account-list small {
+  color: #737586;
+  margin-top: .25rem;
+}
+
+.account-active,
+.account-inactive {
+  border-radius: 999px;
+  padding: .35rem .7rem;
+  font-size: .75rem;
+  font-weight: 700;
+  text-transform: capitalize;
+}
+
+.account-active { background: #dcf7e8; color: #167047; }
+.account-inactive { background: #f0f0f0; color: #666; }
+
+@media (max-width: 900px) {
+  .super-admin-security-grid { grid-template-columns: 1fr; gap: 0; }
+}

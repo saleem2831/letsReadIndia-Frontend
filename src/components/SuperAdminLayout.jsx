@@ -167,6 +167,19 @@ export default function SuperAdminLayout() {
             </li>
 
 
+            {/* ALL ORDERS */}
+            <li className="super-admin-nav-item">
+              <Link
+                to="orders"
+                className={`super-admin-nav-link ${isActive("orders")}`}
+                onClick={() => setMenuOpen(false)}
+              >
+                <span className="super-admin-nav-icon">🧾</span>
+                <span>All Orders</span>
+              </Link>
+            </li>
+
+
             {/* MANAGE PRODUCTS */}
             <li className="super-admin-nav-item">
 
@@ -215,6 +228,9 @@ export default function SuperAdminLayout() {
               </Link>
 
             </li>
+
+            <li className="super-admin-nav-item"><Link to="coupons" className={`super-admin-nav-link ${isActive("coupons")}`} onClick={() => setMenuOpen(false)}><span className="super-admin-nav-icon">🏷️</span><span>Coupons</span></Link></li>
+            <li className="super-admin-nav-item"><Link to="reading-assessments" className={`super-admin-nav-link ${isActive("reading-assessments")}`} onClick={() => setMenuOpen(false)}><span className="super-admin-nav-icon">📊</span><span>Reading Tests</span></Link></li>
 
           </ul>
 

@@ -181,3 +181,21 @@
   color: #ffffff !important;
   opacity: 0.85;
 }
+
+
+.footer-nav-link,
+.footer .contact a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.footer-nav-link:hover,
+.footer .contact a:hover {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
+.footer ul li {
+  cursor: pointer;
+}

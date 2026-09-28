@@ -66,7 +66,7 @@ export default function ChoosePath() {
               <li><span className="bullet purple"></span>15–20 mins daily routine for best results</li>
             </ul>
 
-            <a href="/parents" className="btn purple-btn">
+            <a href="/reading-age" className="btn purple-btn">
               Explore Home Kits →
             </a>
           </div>
@@ -96,7 +96,7 @@ export default function ChoosePath() {
               <li><span className="bullet pink"></span>Mentoring and Observations on request</li>
             </ul>
 
-            <a href="/schools" className="btn pink-btn">
+            <a href="/contact" className="btn pink-btn">
               See School Program →
             </a>
           </div>

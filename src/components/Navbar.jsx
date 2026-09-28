@@ -44,17 +44,6 @@ const [schoolSuccess, setSchoolSuccess] = useState("");
 
 
 
-// const handleParentSubmit = async (e) => {
-//   e.preventDefault();
-
-//   try {
-//     const data = await submitParentInquiry(parentForm);
-//     alert(data.message);
-//   } catch (error) {
-//     console.error("Full Error:", error);
-//     alert(error.message || "Something went wrong");
-//   }
-// };
 
 
 const handleParentSubmit = async (e) => {
@@ -163,8 +152,8 @@ const handleSchoolSubmit = async (e) => {
 
           {/* Right Buttons */}
           <div className="nav-actions">
-            <button className="parent-btn" onClick={() => setShowParentForm(true)}>I'm a Parent</button>
-            <button className="school-btn" onClick={() => setShowSchoolForm(true)}>I'm a School</button>
+            {/* <button className="parent-btn" onClick={() => setShowParentForm(true)}>Join as Parent</button> */}
+            <button className="school-btn" onClick={() => setShowSchoolForm(true)}>Join as School</button>
             {/* <span className="icon">🌙</span> */}
             <Link to="/cart" className="cart-icon">
               🛒

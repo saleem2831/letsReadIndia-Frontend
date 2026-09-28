@@ -1,362 +1,86 @@
-
-
-import { useState } from "react";
-import { useCart } from "../context/CartContext";
-import "../styles/checkout.css";
+import { useEffect, useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
+import { useCart } from "../context/CartContext";
+import { API_URL } from "../services/api";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import "../styles/checkout.css";
+
+const fallbackCountries = [["IN", "India"], ["AE", "United Arab Emirates"], ["US", "United States"], ["GB", "United Kingdom"],
+  ["CA", "Canada"], ["AU", "Australia"], ["SG", "Singapore"], ["SA", "Saudi Arabia"], ["QA", "Qatar"],
+  ["OM", "Oman"], ["KW", "Kuwait"], ["BH", "Bahrain"], ["NZ", "New Zealand"], ["DE", "Germany"], ["FR", "France"]];
 
 export default function Checkout() {
   const navigate = useNavigate();
-  const { cart, cartTotal, clearCart } = useCart();
-
-
-
-  const [form, setForm] = useState({
-  customer_name: "",
-  email: "",
-  phone: "",
-  address: "",
-  pincode: "",
-  city: "",
-  state: "",
-  country: "India"
-});
-
-
+  const { cart, clearCart } = useCart();
+  const [form, setForm] = useState({ customer_name: "", email: "", phone: "", address: "", pincode: "", city: "", state: "", country: "India", country_code: "IN" });
+  const [coupon, setCoupon] = useState("");
+  const [payment, setPayment] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+  const [shippingCountries, setShippingCountries] = useState(fallbackCountries);
 
-  const handleChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
+  useEffect(() => {
+    fetch(`${API_URL}/shipping/countries`).then((response) => response.json()).then((data) => {
+      if (data.data?.length) setShippingCountries(data.data.map((country) => [country.code, country.name]));
+    }).catch(() => {});
+  }, []);
+
+  const change = (event) => {
+    const { name, value } = event.target;
+    if (name === "country_code") {
+      setForm((current) => ({ ...current, country_code: value, country: shippingCountries.find(([code]) => code === value)?.[1] || value }));
+    } else setForm((current) => ({ ...current, [name]: value }));
+    setPayment(null);
   };
 
-  const TAX_RATE = 0.18; // 18% GST
-const taxAmount = cartTotal * TAX_RATE;
-const grandTotal = cartTotal - taxAmount;
-
-  const payAndPlaceOrder = async () => {
-    if (!cart.length) return alert("Cart is empty");
-
-    // if (!form.customer_name || !form.phone || !form.address) {
-    //   return alert("Please fill all required fields");
-    // }
-
-    if (
-  !form.customer_name ||
-  !form.phone ||
-  !form.address ||
-  !form.pincode ||
-  !form.city ||
-  !form.state
-) {
-  return alert("Please fill all required fields");
-}
-
-
+  const createQuote = async () => {
+    if (!cart.length) return setError("Your cart is empty.");
+    setLoading(true); setError("");
     try {
-      setLoading(true);
-
-      // 🧾 1️⃣ Create Razorpay order from backend
-      const paymentRes = await fetch(
-        // "http://localhost:4000/api/payments/create",
-        "https://api.letsreadindia.in/api/payments/create",
-
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ amount: cartTotal + 100 })
-        }
-      );
-
-      const paymentData = await paymentRes.json();
-
-      if (!paymentRes.ok) {
-        throw new Error(paymentData.message || "Payment init failed");
-      }
-
-      // 💳 2️⃣ Razorpay options
-      const options = {
-        key: "rzp_live_Sg2lUWMDUXzFRV",
-        amount: paymentData.amount,
-        currency: "INR",
-        order_id: paymentData.orderId,
-        name: "LetsReadIndia",
-        description: "Book Order Payment",
-
-        handler: async function (response) {
-          try {
-            setLoading(true);
-
-            const payload = {
-              ...form,
-              payment_id: response.razorpay_payment_id,
-              order_id: response.razorpay_order_id,
-              signature: response.razorpay_signature,
-              items: cart.map((item) => ({
-                product_id: item.id,
-                quantity: item.qty,
-                price: item.price
-              }))
-            };
-
-            const orderRes = await fetch(
-              // "http://localhost:4000/api/orders",
-              "https://api.letsreadindia.in/api/orders",
-              {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(payload)
-              }
-            );
-
-            const orderData = await orderRes.json();
-
-            if (!orderRes.ok) {
-              throw new Error(orderData.message || "Order failed");
-            }
-
-            // clearCart();
-            // navigate("/order-success");
-            clearCart();
-navigate("/order-success", {
-  state: { orderNumber: orderData.order_number }
-});
-
-          } catch (err) {
-            console.error(err);
-            alert("Order placement failed");
-            setLoading(false);
-          }
-        },
-
-        modal: {
-          ondismiss: () => {
-            // ❗ User closed Razorpay
-            setLoading(false);
-          }
-        },
-
-        prefill: {
-          name: form.customer_name,
-          email: form.email,
-          contact: form.phone
-        },
-
-        theme: { color: "#000" }
-      };
-
-      const razorpay = new window.Razorpay(options);
-      razorpay.open();
-
-    } catch (err) {
-      console.error(err);
-      alert("Payment failed");
-      setLoading(false);
-    }
+      const response = await fetch(`${API_URL}/payments/create`, { method: "POST", headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ customer: form, coupon_code: coupon, items: cart.map((item) => ({ product_id: item.id, quantity: item.qty })) }) });
+      const data = await response.json();
+      if (!response.ok) throw new Error(data.message || "Unable to calculate the total");
+      setPayment(data);
+    } catch (requestError) { setError(requestError.message); }
+    finally { setLoading(false); }
   };
 
-  if (loading) {
-    return (
-      <>
-        <Navbar />
-        <div className="loader-page">
-          <div className="spinner"></div>
-          <p>Processing your payment & order...</p>
-        </div>
-        <Footer />
-      </>
-    );
-  }
+  const pay = () => {
+    if (!payment) return;
+    const razorpay = new window.Razorpay({
+      key: payment.key, amount: payment.amount, currency: payment.currency, order_id: payment.orderId,
+      name: "LetsReadIndia", description: "Book order", theme: { color: "#5936ad" },
+      prefill: { name: form.customer_name, email: form.email, contact: form.phone },
+      handler: async (response) => {
+        setLoading(true); setError("");
+        try {
+          const orderResponse = await fetch(`${API_URL}/orders`, { method: "POST", headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ payment_id: response.razorpay_payment_id, order_id: response.razorpay_order_id, signature: response.razorpay_signature }) });
+          const data = await orderResponse.json();
+          if (!orderResponse.ok) throw new Error(data.message || "Order placement failed");
+          clearCart(); navigate("/order-success", { state: { orderNumber: data.order_number } });
+        } catch (requestError) { setError(requestError.message); setLoading(false); }
+      },
+      modal: { ondismiss: () => setLoading(false) },
+    });
+    razorpay.open();
+  };
 
-  return (
-    <>
-      <Navbar />
-      <div className="checkout-page">
-        {/* Hero Section */}
-        <section className="checkout-hero">
-          <div className="checkout-hero-content">
-            <h1>Complete Your Order</h1>
-            <p>Review and confirm your delivery information</p>
-          </div>
-        </section>
-
-        {/* Checkout Content */}
-        <section className="checkout-content">
-          <div className="checkout-container">
-            {/* Delivery Form */}
-            <div className="delivery-section">
-              <h2>Delivery Information</h2>
-              
-              <form className="checkout-form">
-                <div className="form-group">
-                  <label htmlFor="customer_name">Full Name *</label>
-                  <input
-                    id="customer_name"
-                    name="customer_name"
-                    placeholder="Enter your full name"
-                    value={form.customer_name}
-                    onChange={handleChange}
-                    required
-                  />
-                </div>
-
-                <div className="form-group">
-                  <label htmlFor="email">Email Address</label>
-                  <input
-                    id="email"
-                    name="email"
-                    type="email"
-                    placeholder="Enter your email"
-                    value={form.email}
-                    onChange={handleChange}
-                  />
-                </div>
-
-                <div className="form-group">
-                  <label htmlFor="phone">Phone Number *</label>
-                  <input
-                    id="phone"
-                    name="phone"
-                    placeholder="Enter your phone number"
-                    value={form.phone}
-                    onChange={handleChange}
-                    required
-                  />
-                </div>
-
-                <div className="form-group">
-                  <label htmlFor="address">Delivery Address *</label>
-                  <textarea
-                    id="address"
-                    name="address"
-                    placeholder="Enter your complete delivery address"
-                    value={form.address}
-                    onChange={handleChange}
-                    rows="4"
-                    required
-                  ></textarea>
-                </div>
-
-
-
-<div className="form-row">
-  <div className="form-group">
-    <label htmlFor="city">City *</label>
-    <input
-      id="city"
-      name="city"
-      placeholder="Enter your city"
-      value={form.city}
-      onChange={handleChange}
-      required
-    />
-  </div>
-
-  <div className="form-group">
-    <label htmlFor="state">State *</label>
-    <input
-      id="state"
-      name="state"
-      placeholder="Enter your state"
-      value={form.state}
-      onChange={handleChange}
-      required
-    />
-  </div>
-
-  <div className="form-group">
-    <label htmlFor="country">Country *</label>
-    <input
-      id="country"
-      name="country"
-      value={form.country}
-      onChange={handleChange}
-      required
-    />
-  </div>
-
-  <div className="form-group">
-    <label htmlFor="pincode">Pincode *</label>
-    <input
-      id="pincode"
-      name="pincode"
-      placeholder="Enter your pincode"
-      value={form.pincode}
-      onChange={handleChange}
-      required
-    />
-  </div>
-</div>
-
-              </form>
-            </div>
-
-            {/* Order Summary */}
-            <div className="order-summary">
-              <h2>Order Summary</h2>
-              
-              <div className="summary-items">
-                {cart.map(item => (
-                  <div key={item.id} className="summary-item">
-                    <div className="item-info">
-                      <span className="item-name">{item.name}</span>
-                      <span className="item-qty">x{item.qty}</span>
-                    </div>
-                    <span className="item-amount">₹{item.price * item.qty}</span>
-                  </div>
-                ))}
-              </div>
-
-              <div className="summary-divider"></div>
-
-              {/* <div className="summary-row">
-                <span>Subtotal:</span>
-                <span>₹{cartTotal}</span>
-              </div> */}
-      <div className="summary-row">
-                <span>Subtotal:</span>
-                <span>₹{grandTotal}</span>
-              </div>
-              <div className="summary-row">
-                <span>Shipping:</span>
-                <span className="free">₹ 100</span>
-              </div>
-
-              {/* <div className="summary-row">
-                <span>Tax:</span>
-                <span>₹0</span>
-              </div> */}
-
-              <div className="summary-row">
-            <span>Tax (18% GST):</span>
-           <span>₹{taxAmount.toFixed(2)}</span>
-            </div>
-
-
-              <div className="summary-divider"></div>
-
-              <div className="summary-total">
-                <span>Total Amount:</span>
-                <span>₹{cartTotal + 100}</span>
-              </div>
-
-              <button
-                className="pay-btn"
-                onClick={payAndPlaceOrder}
-                disabled={loading}
-              >
-                {loading ? "Processing..." : "Pay & Place Order"}
-              </button>
-
-              <Link to="/cart" className="back-to-cart">
-                ← Back to Cart
-              </Link>
-            </div>
-          </div>
-        </section>
-      </div>
-      <Footer />
-    </>
-  );
+  const q = payment?.quote;
+  return <><Navbar /><div className="checkout-page"><section className="checkout-hero"><div className="checkout-hero-content"><h1>Complete Your Order</h1><p>International cards and Shiprocket delivery quotes are supported.</p></div></section>
+    <section className="checkout-content"><div className="checkout-container"><div className="delivery-section"><h2>Delivery Information</h2><form className="checkout-form" onSubmit={(event) => { event.preventDefault(); createQuote(); }}>
+      <div className="form-group"><label>Full name *</label><input required name="customer_name" value={form.customer_name} onChange={change} /></div>
+      <div className="form-group"><label>Email *</label><input required type="email" name="email" value={form.email} onChange={change} /></div>
+      <div className="form-group"><label>Phone *</label><input required name="phone" value={form.phone} onChange={change} /></div>
+      <div className="form-group"><label>Address *</label><textarea required name="address" value={form.address} onChange={change} rows="4" /></div>
+      <div className="form-row"><div className="form-group"><label>City *</label><input required name="city" value={form.city} onChange={change} /></div><div className="form-group"><label>State / Province *</label><input required name="state" value={form.state} onChange={change} /></div></div>
+      <div className="form-row"><div className="form-group"><label>Country *</label><select name="country_code" value={form.country_code} onChange={change}>{shippingCountries.map(([code, name]) => <option key={code} value={code}>{name}</option>)}</select></div><div className="form-group"><label>Postal code *</label><input required name="pincode" value={form.pincode} onChange={change} /></div></div>
+      <div className="form-group"><label>Coupon code</label><div className="coupon-entry"><input value={coupon} onChange={(event) => { setCoupon(event.target.value.toUpperCase()); setPayment(null); }} placeholder="Enter coupon" /><button type="submit">Apply & quote</button></div></div>
+    </form></div>
+    <div className="order-summary"><h2>Order Summary</h2><div className="summary-items">{cart.map((item) => <div key={item.id} className="summary-item"><div className="item-info"><span className="item-name">{item.name}</span><span className="item-qty">×{item.qty}</span></div><span>₹{Number(item.price * item.qty).toFixed(2)}</span></div>)}</div><div className="summary-divider" />
+      {q ? <><div className="summary-row"><span>Subtotal</span><span>₹{Number(q.subtotal).toFixed(2)}</span></div>{q.discount > 0 && <div className="summary-row discount-row"><span>Coupon {q.coupon_code}</span><span>−₹{Number(q.discount).toFixed(2)}</span></div>}<div className="summary-row"><span>Shiprocket ({q.shipping_mode})</span><span>₹{Number(q.shipping_fee).toFixed(2)}</span></div><small className="shipping-detail">{q.courier_name}{q.estimated_delivery_days ? ` • ${q.estimated_delivery_days} days` : ""}</small><div className="summary-divider" /><div className="summary-total"><span>Total</span><span>₹{Number(q.total).toFixed(2)} INR</span></div><button className="pay-btn" onClick={pay} disabled={loading}>{loading ? "Processing…" : "Pay securely"}</button><p className="payment-note">Foreign cards work after International Payments is enabled in your Razorpay account.</p></> : <button className="pay-btn" onClick={createQuote} disabled={loading}>{loading ? "Getting Shiprocket rate…" : "Calculate delivery & total"}</button>}
+      {error && <p className="checkout-error">{error}</p>}<Link to="/cart" className="back-to-cart">← Back to cart</Link>
+    </div></div></section></div><Footer /></>;
 }
