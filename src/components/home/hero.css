@@ -510,6 +510,10 @@
   right: 22px;
 }
 
+.hero-arrow-label {
+  display: none;
+}
+
 /* =========================================================
    DOTS
 ========================================================= */
@@ -714,10 +718,53 @@
   }
 
   .hero-arrow {
+    display: flex;
+  }
+
+  /* Keep the mobile control simple: show one clear Next button. */
+  .hero-arrow-left {
     display: none;
   }
 
+  .hero-arrow-right {
+    top: auto;
+    right: 14px;
+    bottom: 16px;
+
+    width: auto;
+    min-width: 84px;
+    height: 40px;
+
+    padding: 0 15px;
+    gap: 8px;
+
+    border: 1px solid rgba(255, 255, 255, 0.38);
+    border-radius: 999px;
+
+    background: rgba(255, 255, 255, 0.22);
+
+    font-size: 15px;
+    font-weight: 700;
+
+    transform: none;
+  }
+
+  .hero-arrow-right:hover,
+  .hero-arrow-right:active {
+    background: rgba(255, 255, 255, 0.32);
+    transform: translateY(-1px);
+  }
+
+  .hero-arrow-label {
+    display: inline;
+  }
+
   .hero-dots {
+    left: 16px;
+    bottom: 32px;
+
+    transform: none;
+
     gap: 6px;
   }
 
