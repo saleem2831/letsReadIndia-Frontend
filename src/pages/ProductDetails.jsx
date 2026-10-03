@@ -235,10 +235,10 @@ export default function ProductDetails() {
               </div>
 
               <div className="pd-meta">
-                <div className="pd-meta-item">
+                {/* <div className="pd-meta-item">
                   <span className="pd-meta-icon">📦</span>
                   <span className="pd-meta-text">Free Shipping</span>
-                </div>
+                </div> */}
                 <div className="pd-meta-item">
                   <span className="pd-meta-icon">🔄</span>
                   <span className="pd-meta-text">7-Day Returns</span>
