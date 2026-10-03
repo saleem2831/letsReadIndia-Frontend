@@ -1,345 +1,3 @@
-// import './hero.css'
-// // import main from "../../assets/main-image.png";
-// import main from "../../assets/lets-read-hero.PNG";
-
-// export default function Hero() {
-//   return (
-//     <section className="hero-section">
-//       {/* Decorative Elements */}
-//       <div className="hero-decoration decoration-1"></div>
-//       <div className="hero-decoration decoration-2"></div>
-//       <div className="hero-decoration decoration-3"></div>
-
-//       <div className="hero-container">
-//         {/* Left Content */}
-//         <div className="hero-content">
-//           {/* <h1 className="hero-headline">
-//             Kinesthetic Reading Kits &amp; Programs that Build Confident <span className="hero-highlight">Readers</span>
-//           </h1> */}
-
-//           <h1 className="hero-headline">
-//               Bridging the Reading Gap in children          
-//           </h1>
-
-//           {/* <p className="hero-description">
-//             Let's Read India helps children (3–12) move from <strong>phonics → comprehension → fluent reading</strong> through joyful, hands-on learning — at home and in school.
-//           </p> */}
-
-//                <p className="hero-description">
-//             Helping children aged 3–12 build the skills to read and understand at the level needed for their age and grade. 
-//             <p> <strong>Created by an Indian educator for learning English as a second language.</strong>          
-// </p>
-
-//           </p>
-
-
-//           <div className="hero-buttons">
-//             <a href="/products" className="hero-btn hero-btn-primary">
-//               Shop Kits for My Child
-//             </a>
-//             <a href="/demo" className="hero-btn hero-btn-secondary">
-//               Book a Demo for My School
-//             </a>
-//             <a href="/nep-ncf" className="hero-btn hero-btn-tertiary">
-//               NEP and NCF aligned Program
-//             </a>
-//           </div>
-//         </div>
-
-//         {/* Right Image */}
-//         <div className="hero-image-container">
-//           <div className="hero-image-wrapper">
-//             <img 
-//               src={main} 
-//               alt="Children learning with reading kits"
-//             />
-//           </div>
-//         </div>
-//       </div>
-//     </section>
-//   )
-// }
-
-
-// import { useEffect, useState } from "react";
-// import "./hero.css";
-
-// // Hero Images
-// import hero1 from "../../assets/lets-read-hero.PNG";
-// import hero2 from "../../assets/lets-read-hero.PNG";
-// import hero3 from "../../assets/lets-read-hero.PNG";
-// import hero4 from "../../assets/lets-read-hero.PNG";
-// import hero5 from "../../assets/lets-read-hero.PNG";
-// import hero6 from "../../assets/lets-read-hero.PNG";
-// import hero7 from "../../assets/lets-read-hero.PNG";
-// import hero8 from "../../assets/lets-read-hero.PNG";
-
-// const slides = [
-//   {
-//     image: hero1,
-//     alt: "Children learning with Let's Read India reading kits",
-//   },
-//   {
-//     image: hero2,
-//     alt: "Children developing English reading skills",
-//   },
-//   {
-//     image: hero3,
-//     alt: "Interactive reading activities for children",
-//   },
-//   {
-//     image: hero4,
-//     alt: "Children improving reading comprehension",
-//   },
-//   {
-//     image: hero5,
-//     alt: "Hands-on English learning activities",
-//   },
-//   {
-//     image: hero6,
-//     alt: "Reading program for children aged 3 to 12",
-//   },
-//   {
-//     image: hero7,
-//     alt: "Children learning English as a second language",
-//   },
-//   {
-//     image: hero8,
-//     alt: "Let's Read India school reading program",
-//   },
-// ];
-
-// export default function Hero() {
-//   const [currentSlide, setCurrentSlide] = useState(0);
-//   const [isPaused, setIsPaused] = useState(false);
-
-//   /*
-//    * ==========================================
-//    * AUTO PLAY
-//    * ==========================================
-//    */
-
-//   useEffect(() => {
-//     if (isPaused) {
-//       return;
-//     }
-
-//     const interval = setInterval(() => {
-//       setCurrentSlide((prevSlide) => {
-//         return (prevSlide + 1) % slides.length;
-//       });
-//     }, 4000);
-
-//     return () => clearInterval(interval);
-//   }, [isPaused]);
-
-//   /*
-//    * ==========================================
-//    * NEXT SLIDE
-//    * ==========================================
-//    */
-
-//   const nextSlide = () => {
-//     setCurrentSlide((prevSlide) => {
-//       return (prevSlide + 1) % slides.length;
-//     });
-//   };
-
-//   /*
-//    * ==========================================
-//    * PREVIOUS SLIDE
-//    * ==========================================
-//    */
-
-//   const previousSlide = () => {
-//     setCurrentSlide((prevSlide) => {
-//       return (prevSlide - 1 + slides.length) % slides.length;
-//     });
-//   };
-
-//   /*
-//    * ==========================================
-//    * GO TO SPECIFIC SLIDE
-//    * ==========================================
-//    */
-
-//   const goToSlide = (index) => {
-//     setCurrentSlide(index);
-//   };
-
-//   /*
-//    * ==========================================
-//    * JSX
-//    * ==========================================
-//    */
-
-//   return (
-//     <section className="hero-section">
-
-//       {/* =====================================
-//           DECORATIVE BACKGROUND ELEMENTS
-//       ====================================== */}
-
-//       <div className="hero-decoration decoration-1"></div>
-//       <div className="hero-decoration decoration-2"></div>
-//       <div className="hero-decoration decoration-3"></div>
-
-//       {/* =====================================
-//           HERO CONTAINER
-//       ====================================== */}
-
-//       <div className="hero-container">
-
-//         {/* ===================================
-//             LEFT CONTENT
-//         ==================================== */}
-
-//         <div className="hero-content">
-
-//           <h1 className="hero-headline">
-//             Bridging the Reading Gap in Children
-//           </h1>
-
-//           <p className="hero-description">
-//             Helping children aged 3–12 build the skills to read and
-//             understand at the level needed for their age and grade.
-//           </p>
-
-//           <p className="hero-description hero-sub-description">
-//             <strong>
-//               Created by an Indian educator for learning English as a
-//               second language.
-//             </strong>
-//           </p>
-
-//           {/* =================================
-//               CTA BUTTONS
-//           ================================== */}
-
-//           <div className="hero-buttons">
-
-//             <a
-//               href="/products"
-//               className="hero-btn hero-btn-primary"
-//             >
-//               Shop Kits for My Child
-//             </a>
-
-//             <a
-//               href="/demo"
-//               className="hero-btn hero-btn-secondary"
-//             >
-//               Book a Demo for My School
-//             </a>
-
-//             <a
-//               href="/nep-ncf"
-//               className="hero-btn hero-btn-tertiary"
-//             >
-//               NEP and NCF Aligned Program
-//             </a>
-
-//           </div>
-
-//         </div>
-
-//         {/* ===================================
-//             RIGHT CAROUSEL
-//         ==================================== */}
-
-//         <div
-//           className="hero-image-container"
-//           onMouseEnter={() => setIsPaused(true)}
-//           onMouseLeave={() => setIsPaused(false)}
-//         >
-
-//           <div className="hero-carousel">
-
-//             {/* =================================
-//                 IMAGE AREA
-//             ================================== */}
-
-//             <div className="hero-image-wrapper">
-
-//               {slides.map((slide, index) => (
-//                 <img
-//                   key={index}
-//                   src={slide.image}
-//                   alt={slide.alt}
-//                   className={`hero-slide-image ${
-//                     index === currentSlide ? "active" : ""
-//                   }`}
-//                 />
-//               ))}
-
-//               {/* =================================
-//                   PREVIOUS BUTTON
-//               ================================== */}
-
-//               <button
-//                 type="button"
-//                 className="hero-carousel-arrow hero-carousel-prev"
-//                 onClick={previousSlide}
-//                 aria-label="Previous slide"
-//               >
-//                 &#10094;
-//               </button>
-
-//               {/* =================================
-//                   NEXT BUTTON
-//               ================================== */}
-
-//               <button
-//                 type="button"
-//                 className="hero-carousel-arrow hero-carousel-next"
-//                 onClick={nextSlide}
-//                 aria-label="Next slide"
-//               >
-//                 &#10095;
-//               </button>
-
-//               {/* =================================
-//                   SLIDE COUNTER
-//               ================================== */}
-
-//               <div className="hero-slide-counter">
-//                 {currentSlide + 1} / {slides.length}
-//               </div>
-
-//             </div>
-
-//             {/* =================================
-//                 DOT INDICATORS
-//             ================================== */}
-
-//             <div className="hero-carousel-dots">
-
-//               {slides.map((_, index) => (
-//                 <button
-//                   key={index}
-//                   type="button"
-//                   className={`hero-carousel-dot ${
-//                     index === currentSlide ? "active" : ""
-//                   }`}
-//                   onClick={() => goToSlide(index)}
-//                   aria-label={`Go to slide ${index + 1}`}
-//                   aria-current={
-//                     index === currentSlide ? "true" : "false"
-//                   }
-//                 />
-//               ))}
-
-//             </div>
-
-//           </div>
-
-//         </div>
-
-//       </div>
-
-//     </section>
-//   );
-// }
 
 
 import { useEffect, useState } from "react";
@@ -349,6 +7,11 @@ import main from "../../assets/lets-read-hero.PNG";
 import main2 from "../../assets/letread-image-2.jpg";
 import main3 from "../../assets/letread-image-3.jpg";
 import main4 from "../../assets/letread-image-4.jpg";
+import main5 from "../../assets/letsread-5.jpeg";
+import main6 from "../../assets/letsread-6.jpeg";
+import main7 from "../../assets/letsread-7.jpeg";
+import main8 from "../../assets/letsread-8.jpeg";
+
 
 
 const slides = [
@@ -491,7 +154,7 @@ const slides = [
       //   type: "tertiary",
       // },
     ],
-    image: main,
+    image: main5,
     alt: "Hands-on reading learning kits",
     theme: "orange",
   },
@@ -519,7 +182,7 @@ const slides = [
       //   type: "tertiary",
       // },
     ],
-    image: main,
+    image: main6,
     alt: "Parent supporting child reading",
     theme: "indigo",
   },
@@ -547,7 +210,7 @@ const slides = [
       //   type: "tertiary",
       // },
     ],
-    image: main,
+    image: main7,
     alt: "School reading program",
     theme: "violet",
   },
@@ -575,7 +238,7 @@ const slides = [
       //   type: "tertiary",
       // },
     ],
-    image: main,
+    image: main8,
     alt: "NEP and NCF aligned reading program",
     theme: "gold",
   },

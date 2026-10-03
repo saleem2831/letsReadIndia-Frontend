@@ -6,7 +6,7 @@ export default function Testimonials() {
     {
       quote:
         "Let's read really helped my students build clarity of sounds and gaining confidence in listening and speaking. The hands-on activities got my students curious for learning.",
-      author: "Harshita Doe",
+      author: "Shrinidhi",
       role: "TeachForIndia Fellow",
     },
     {

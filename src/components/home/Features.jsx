@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./Features.css";
-import { FaCheckCircle, FaHandshake, FaTrophy, FaMicroscope, FaMedal, FaClipboardList } from "react-icons/fa";
+import { FaCheckCircle, FaHandshake, FaTrophy, FaMicroscope, FaMedal, FaClipboardList,FaBook,FaGlobe } from "react-icons/fa";
 
 export default function Features() {
   const [show, setShow] = useState(false);
@@ -55,14 +55,14 @@ export default function Features() {
       badge: "",
     },
         {
-      icon: <FaClipboardList />,
+      icon: <FaGlobe/>,
       title: "Designed for the Indian Classroom",
       desc: "Aligned with the NCF 2022 framework.",
       color: "orange",
       badge: "",
     },
         {
-      icon: <FaClipboardList />,
+      icon: <FaBook />,
       title: "Made for Real-World Learning",
       desc: "Used in National and International in schools in Asia and Africa as part of the foundational literacy curriculum.",
       color: "orange",
